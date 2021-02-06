@@ -25,7 +25,7 @@ Test Framework:
 `AssertJ`
 
 IDE:
-`IntelliJ`
+`IntelliJ IDEA`
 
 
 
