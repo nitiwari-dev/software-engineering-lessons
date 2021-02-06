@@ -24,8 +24,8 @@ class MonopolyTest {
     @Test
     @DisplayName("if the dice has different number return there new position")
     void givenDiceNumberReturnNewPosition() {
-        given(spy.throwDice()).willReturn(1, 1);
-        assertThat(spy.advance()).isEqualTo(0);
+        given(spy.throwDice()).willReturn(1, 3);
+        assertThat(spy.advance()).isEqualTo(4);
         verify(spy, Mockito.atMost(6)).throwDice();
     }
 
@@ -38,7 +38,7 @@ class MonopolyTest {
     }
 
     @Test
-    @DisplayName("if the dice values are equal advance the position and stop when max is reached")
+    @DisplayName("if the dice values are equal advance the position and stop when max limit is reached")
     void advanceDiceAndStopRecursion() {
         given(spy.throwDice()).willReturn(1, 1, 2, 3); //
         assertThat(spy.advance(3)).isEqualTo(7);
