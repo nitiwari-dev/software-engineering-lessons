@@ -26,7 +26,7 @@ class MonopolyTest {
     void givenDiceNumberReturnNewPosition() {
         given(spy.throwDice()).willReturn(1, 3);
         assertThat(spy.advance()).isEqualTo(4);
-        verify(spy, Mockito.atMost(6)).throwDice();
+        verify(spy, Mockito.times(2)).throwDice();
     }
 
     @Test
