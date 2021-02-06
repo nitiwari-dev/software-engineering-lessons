@@ -1,0 +1,32 @@
+**TDD**
+Live HandsOn Demo on TDD:
+
+Test Driven Development with use of mockito/spy and JUnit 
+
+Its has two examples
+1. Monopoly -> 100% code coverage
+2. ShortName -> 100% code coverage
+
+HandOn: 
+1. Why and How to TDD for Software Project?
+2. How to refactor code? Modified same code with different refactoring style.
+3. Discussed approaches of TDD
+4. Naming convention patterns
+5. Best practices of TDD
+
+
+Programming Lang:
+`Java`
+
+Test Framework:
+`JUnit`
+`Mockito`
+`AssertJ`
+
+IDE:
+`IntelliJ`
+
+
+
+
+
