@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 class MonopolyTest {
 
 
-    Monopoly spy;
+    private Monopoly spy;
 
     @BeforeEach
     public void setUp() {
@@ -33,7 +33,7 @@ class MonopolyTest {
     @DisplayName("if the dice values are equal and reaches maximum repetition reset position to zero")
     void advanceDiceAndReturnPosition() {
         given(spy.throwDice()).willReturn(1, 1, 1, 1, 1, 1); //
-        assertThat(spy.advance(3)).isEqualTo(0);
+        assertThat(spy.advance(3)).isZero();
         verify(spy, Mockito.atMost(6)).throwDice();
     }
 
