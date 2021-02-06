@@ -7,6 +7,8 @@ Its has two examples
 1. Monopoly -> 100% code coverage
 2. ShortName -> 100% code coverage
 
+Note: Within ShortName example code is commented for reader to understand How I did refactoring and arrived at final code without if-else ?
+
 HandOn: 
 1. Why and How to TDD for Software Project?
 2. How to refactor code? Modified same code with different refactoring style.
