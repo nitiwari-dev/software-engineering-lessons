@@ -1,7 +1,6 @@
 **TDD**
-Live HandsOn Demo on TDD:
 
-Test Driven Development with use of mockito/spy and JUnit 
+Live HandsOn Demo on Test Driven Development using Mockito/Spy and JUnit:
 
 Its has two examples
 1. Monopoly -> 100% code coverage
