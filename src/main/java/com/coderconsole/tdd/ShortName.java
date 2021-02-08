@@ -3,7 +3,6 @@ package com.coderconsole.tdd;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ShortName {
     public String concatInitials(String firstName, String lastName) {
@@ -12,11 +11,13 @@ public class ShortName {
         list.add(firstName);
         list.add(lastName);
 
-        Stream<String> objectStream = list.stream()
-                .filter(it -> it != null && !it.isEmpty())
-                .map(s -> s.substring(0, 1).trim());
-        return objectStream.collect(Collectors.joining());
+        return list.stream()
+                .filter(this::isValidShortName)
+                .map(s -> String.valueOf(s.charAt(0))).collect(Collectors.joining());
+    }
 
+    private boolean isValidShortName(String it) {
+        return it != null && !it.trim().isEmpty();
     }
 
     /*
