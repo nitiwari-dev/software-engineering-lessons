@@ -20,21 +20,35 @@ public class ShortName {
     }
 
     /*
-    public String concatInitialsRefactored2(String firstName, String lastName) {
+     public String concatInitials(String firstName, String lastName) {
+
+        StringBuilder result = new StringBuilder();
+
+        if (firstName != null && !firstName.trim().isEmpty()) {
+            result.append(firstName.charAt(0));
+        }
+
+        if (lastName != null && !lastName.trim().isEmpty()) {
+            result.append(lastName.charAt(0));
+        }
+        return result.toString();
+    }
+
+    public String concatInitials(String firstName, String lastName) {
 
         String result = "";
 
-        if (firstName != null && !firstName.isEmpty()) {
+        if (firstName != null && !firstName.trim().isEmpty()) {
             result = firstName.substring(0, 1);
         }
 
-        if (lastName != null && !lastName.isEmpty()) {
+        if (lastName != null && !lastName.trim().isEmpty()) {
             result += lastName.substring(0, 1);
         }
         return result;
     }
 
-    public String concatInitialsRefactor1(String firstName, String lastName) {
+    public String concatInitials(String firstName, String lastName) {
 
         if (firstName.isEmpty() && lastName.isEmpty())
             return "";
@@ -46,7 +60,6 @@ public class ShortName {
             return firstName.substring(0, 1);
         }
     }
-
     */
 
 
