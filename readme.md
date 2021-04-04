@@ -1,4 +1,4 @@
-**TDD**
+**TDD Session 2**
 
 Live HandsOn Demo on Test Driven Development using Mockito/Spy and JUnit:
 
