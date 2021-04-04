@@ -1,4 +1,4 @@
-**TDD 2**
+**TDD**
 
 Live HandsOn Demo on Test Driven Development using Mockito/Spy and JUnit:
 
@@ -20,9 +20,8 @@ Programming Lang:
 `Java`
 
 Test Framework:
-`JUnit` -> testing
-`Mockito` -> mock or dummy
-`spy` -> Actual object relisation
+`JUnit`
+`Mockito`
 `AssertJ`
 
 IDE:

@@ -12,7 +12,6 @@ import static org.mockito.Mockito.verify;
 
 class MonopolyTest {
 
-
     private Monopoly spy;
 
     @BeforeEach
@@ -20,6 +19,11 @@ class MonopolyTest {
         spy = Mockito.spy(new Monopoly(0)); //
     }
 
+    //Naming Convention:
+
+    //Given when then
+    //when then
+    //cases
 
     @Test
     @DisplayName("if the dice has different number return there new position")
@@ -28,6 +32,10 @@ class MonopolyTest {
         assertThat(spy.advance()).isEqualTo(4);
         verify(spy, Mockito.times(2)).throwDice();
     }
+
+    //D1: 2
+    //D2: 2
+    //
 
     @Test
     @DisplayName("if the dice values are equal and reaches maximum repetition reset position to zero")

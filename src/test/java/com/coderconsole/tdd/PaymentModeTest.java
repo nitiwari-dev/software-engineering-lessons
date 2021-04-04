@@ -1,22 +1,41 @@
 package com.coderconsole.tdd;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class PaymentMode {
+class PaymentModeTest {
 
-    public PaymentMode paymentMode;
+
+    PaymentMode paymentMode;
 
     @BeforeEach
-    void setup() {
+    void setUp(){
         paymentMode = new PaymentMode();
     }
 
     @Test
-    void givenPaymentModeTriggerPayment() {
-        boolean isPaymentSuccessful = paymentMode.triggerPayment("paytm");
-        assertThat(isPaymentSuccessful).isTrue();
+    @DisplayName("given payment mode as paytm return true")
+    void paytm(){
+        boolean isValidPayment = paymentMode.triggerPayment("paytm");
+        assertThat(isValidPayment).isTrue();
     }
+
+    @Test
+    @DisplayName("given payment mode as payu return true")
+    void payu(){
+        boolean isValidPayment = paymentMode.triggerPayment("payu");
+        assertThat(isValidPayment).isTrue();
+    }
+
+    @Test
+    @DisplayName("given payment mode as credit card return true")
+    void credicard(){
+        boolean isValidPayment = paymentMode.triggerPayment("cc");
+        assertThat(isValidPayment).isTrue();
+    }
+
+
 }
