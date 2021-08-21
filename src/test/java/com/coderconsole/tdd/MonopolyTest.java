@@ -14,6 +14,7 @@ class MonopolyTest {
 
     private Monopoly spy;
 
+
     @BeforeEach
     public void setUp() {
         spy = Mockito.spy(new Monopoly(0)); //
@@ -23,19 +24,25 @@ class MonopolyTest {
 
     //Given when then
     //when then
-    //cases
+    //given when
+    //returnWhen
+    //doReturnWhen
 
     @Test
     @DisplayName("if the dice has different number return there new position")
     void givenDiceNumberReturnNewPosition() {
         given(spy.throwDice()).willReturn(1, 3);
         assertThat(spy.advance()).isEqualTo(4);
-        verify(spy, Mockito.times(2)).throwDice();
+        verify(spy, times(2)).throwDice();
     }
 
-    //D1: 2
-    //D2: 2
-    //
+    @Test
+    @DisplayName("if the dice is 1 return current position")
+    void givenDiceIsOneReturnCurrentPosition() {
+        given(spy.throwDice()).willReturn(1);
+        assertThat(spy.advance()).isEqualTo(0);
+        verify(spy, times(6)).throwDice();
+    }
 
     @Test
     @DisplayName("if the dice values are equal and reaches maximum repetition reset position to zero")

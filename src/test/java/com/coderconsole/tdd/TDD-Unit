@@ -1,0 +1,39 @@
+
+Why Not ?
+1# Extra time
+2# Delivery/Product manager chase -> 2 day
+3# Cultural issue
+4# Complexity of code -> 8000 line -> no pattern
+
+
+Why:
+1# Solve the multiple team involement issue
+2# More confident
+3# Easier onboarding
+4# Modular, test to refactor, easy to deploy -> earlier fail -> ()
+
+
+Technial Debt:
+Cyclomaticy complexity:
+
+
+#1. CodeMetrics
+#2. SonarLint -> SonarQube
+#3. Code without if > functional programming
+
+
+
+
+
+Hissig the developer:
+if
+ if
+   if(isLogin && isOnboared)
+     if
+        if
+          {valid}
+       else
+     else
+   else
+ else
+else

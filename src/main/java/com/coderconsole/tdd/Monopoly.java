@@ -19,14 +19,15 @@ public class Monopoly {
       return advance(MAX);
     }
 
+
     public int advance(int count) { // base condition
         if (count == 0) {
             currentPosition = 0;
             return currentPosition;
         }
 
-        int dice1 = throwDice();
-        int dice2 = throwDice();
+        int dice1 = throwDice(); // 2 0
+        int dice2 = throwDice(); // 3 1
 
         currentPosition += dice1 + dice2;
         if (dice1 == dice2) {
