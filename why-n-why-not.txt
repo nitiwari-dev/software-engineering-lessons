@@ -1,0 +1,91 @@
+Why TDD Not ?
+
+1. Time consuming -> 5 lines -> 40 lines test case
+2. Product Manger/ Business need -> time lines -> 2 days
+ -> skip the test case
+3. Cultural Issue
+4. Legacy System
+
+Why ?
+1. Multi team member involvement
+2. Dev side responsibility
+3. Team + Company
+
+Technical Debt -> Legacy System
+
+
+Tools:
+
+TDD:
+
+1. Write the test
+2. Make it fail
+3. Change the code
+4. Pass the code
+Repeat Repea
+
+
+--Naming
+1. given when then
+2. returnWhen
+3. if then
+4. plain englisht
+
+asserting -> value -> t/false
+                    -> size
+                    -> different properties
+                    -> assertJ
+
+
+Plugin: codemetric, sonarlint
+
+spy on object-> excecute the function itself
+mock on object -> donot execute but only create skeleton
+
+
+OtpController -> OtpService -> OtpRepo
+
+class OtpServiceTest {
+
+
+    @Mock
+    OtpRepo repo;
+
+    @InjectMocks
+    OtpService service;
+
+
+}
+
+@SpringBootTest(OtpController.class) /api/login , /api/otp
+class OtpController {
+
+
+    MockMvc mockMvcnTest;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
