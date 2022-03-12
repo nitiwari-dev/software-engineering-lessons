@@ -41,7 +41,7 @@ class ShoppingCartTest {
     }
 
     @Test
-    void givenShoppingCartHasAddeCardReturnList(){
+    void givenShoppingCartHasAddCardReturnList(){
         given(shoppingCart.addCart(anyString(), anyLong())).willReturn(getMockList());
         List<ShoppingCart.Cart> cartList = shoppingCart.addCart("A", 29);
         assertThat(cartList.size()).isEqualTo(1);
