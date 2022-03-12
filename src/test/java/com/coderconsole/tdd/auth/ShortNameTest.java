@@ -1,5 +1,6 @@
-package com.coderconsole.tdd;
+package com.coderconsole.tdd.auth;
 
+import com.coderconsole.tdd.auth.ShortName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,6 @@
-package com.coderconsole.tdd;
+package com.coderconsole.tdd.checkout;
 
+import com.coderconsole.tdd.checkout.PaymentMode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

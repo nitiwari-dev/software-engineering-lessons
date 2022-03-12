@@ -1,4 +1,4 @@
-package com.coderconsole.tdd;
+package com.coderconsole.tdd.auth;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

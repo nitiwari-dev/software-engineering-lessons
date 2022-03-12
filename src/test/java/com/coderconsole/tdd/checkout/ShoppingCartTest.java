@@ -1,5 +1,6 @@
-package com.coderconsole.tdd;
+package com.coderconsole.tdd.checkout;
 
+import com.coderconsole.tdd.checkout.ShoppingCart;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

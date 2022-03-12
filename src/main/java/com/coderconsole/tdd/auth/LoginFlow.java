@@ -1,4 +1,4 @@
-package com.coderconsole.tdd;
+package com.coderconsole.tdd.auth;
 
 public class LoginFlow {
 

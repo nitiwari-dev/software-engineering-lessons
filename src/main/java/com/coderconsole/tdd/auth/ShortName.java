@@ -1,4 +1,4 @@
-package com.coderconsole.tdd;
+package com.coderconsole.tdd.auth;
 
 import java.util.ArrayList;
 import java.util.List;

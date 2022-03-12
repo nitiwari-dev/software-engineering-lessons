@@ -1,4 +1,4 @@
-package com.coderconsole.tdd;
+package com.coderconsole.tdd.generic;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
