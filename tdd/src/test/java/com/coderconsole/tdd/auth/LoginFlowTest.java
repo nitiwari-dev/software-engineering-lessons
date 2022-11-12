@@ -1,6 +1,5 @@
 package com.coderconsole.tdd.auth;
 
-import com.coderconsole.tdd.auth.LoginFlow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,28 +17,28 @@ class LoginFlowTest {
     @Test
     void given_mobile_number_return_200() {
         assertThat(loginFlow
-                .validDateMobile("9876543210"))
+                .isValidMobileNumber("9876543210"))
                 .isEqualTo(200);
     }
 
     @Test
     void given_empty_mobile_number_return_400() {
         assertThat(loginFlow
-                .validDateMobile(""))
+                .isValidMobileNumber(""))
                 .isEqualTo(400);
     }
 
     @Test
     void given_invalid_mobile_number_return_400() {
         assertThat(loginFlow
-                .validDateMobile("1"))
+                .isValidMobileNumber("1"))
                 .isEqualTo(400);
     }
 
     @Test
     void given_invalid_sequence_mobile_number_return_400() {
         assertThat(loginFlow
-                .validDateMobile("1111111111"))
+                .isValidMobileNumber("1111111111"))
                 .isEqualTo(400);
     }
 }
