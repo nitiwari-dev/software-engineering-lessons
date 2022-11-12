@@ -8,7 +8,7 @@ on:
   # pull_request:
   # branches: [ "main" ]
 
-  c.//workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
 
