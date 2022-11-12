@@ -4,6 +4,7 @@
 GIT_DIR=$(git rev-parse --git-dir)
 
 #ln -sf scripts/pre-commit.sh "$GIT_DIR"/hooks/pre-commit
+chmod +x scripts/pre-commit.sh
 cp scripts/pre-commit.sh "$GIT_DIR"/hooks/pre-commit
 
 echo "Pre commit hook installed!"
