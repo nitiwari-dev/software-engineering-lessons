@@ -20,13 +20,14 @@ class MonopolyTest {
         spy = Mockito.spy(new Monopoly(0)); //
     }
 
-    //Naming Convention:
-
-    //Given when then
-    //when then
-    //given when
-    //returnWhen
-    //doReturnWhen
+    /**
+     * Naming Convention:
+     *   - given when then
+     *   - when then
+     *   - given when
+     *   - returnWhen
+     *   - doReturnWhen
+     */
 
     @Test
     @DisplayName("if the dice has different number return there new position")
