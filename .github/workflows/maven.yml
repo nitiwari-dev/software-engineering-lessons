@@ -25,7 +25,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Test with Maven
-      run: mvn test --file tdd/pom.xml
+      run: |
+        pwd
+#      run: mvn test --file tdd/pom.xml
 
 
 
