@@ -3,3 +3,11 @@
 
 
 - [ ] Test Driven Development with Mock, Spy
+
+
+
+
+## How to install pre-commit hook ?
+```sh
+sh scripts/install-hooks.sh
+```
