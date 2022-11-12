@@ -26,10 +26,7 @@ jobs:
     - id: file_changes
       name: File Changes
       uses: trilom/file-changes-action@v1.2.3
-    
-    - name: Ouput File Changes
-      run: echo '$'
-      
+         
     - if: contains(steps.file_changes.outputs.files , 'tdd/')
       name: Build Maven Project
       run: |
