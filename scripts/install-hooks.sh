@@ -2,7 +2,6 @@
 
 ## Move pre commit hook
 brew install pre-commit
-pwd
 
 # Find the git directory
 GIT_DIR=$(git rev-parse --git-dir)
