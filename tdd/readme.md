@@ -2,9 +2,16 @@
 
 Live HandsOn Demo on Test Driven Development using Mockito/Spy and JUnit:
 
-Its has two examples
-1. Monopoly -> 100% code coverage
-2. ShortName -> 100% code coverage
+Examples (100% code coverage)
+- auth
+  - EmailLookUp
+  - LoginFlow
+  - ShortName
+- checkout
+  - PaymentMode
+  - ShoppingCart
+- generic
+  - Monopoly
 
 Note: Within ShortName example code is commented for reader to understand How I did refactoring and arrived at final code without if-else ?
 
