@@ -2,7 +2,7 @@
 
 echo "Pre-commit hook in action"
 
-cd back back || exit
+#cd back back || { echo "Cannot go back" ; exit 1;}
 
 scripts/run-tests.sh
 
