@@ -2,7 +2,9 @@
 
 echo "Pre-commit hook in action"
 
-./scripts/run-tests.sh
+cd back back || exit
+
+scripts/run-tests.sh
 
 if [ $? -ne 0 ]; then
  echo "Tests failed!"
