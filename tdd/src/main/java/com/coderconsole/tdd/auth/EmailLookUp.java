@@ -5,11 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Validate the email lookup
- *
- * ["gmail.com", "yahoo.com", "outlook.com"]
- * nitesh.tiwari@in.com
- *
+ * As a customer I want to validate email supported into the input field
  */
 public class EmailLookUp {
 

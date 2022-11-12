@@ -16,7 +16,7 @@ class EmailLookUpTest {
 
     @Test
     void given_valid_email_then_return_true() {
-        boolean isValidEmail = emailLookUp.validateEmail("nitesh.tiwari@gmail.com");
+        boolean isValidEmail = emailLookUp.validateEmail("foo.bar@gmail.com");
         assertThat(isValidEmail).isTrue();
 
     }
@@ -29,13 +29,13 @@ class EmailLookUpTest {
 
     @Test
     void given_email_id_return_domain_name() {
-        String email = emailLookUp.getDomainName("nitesh.tiwari@xyz.com");
+        String email = emailLookUp.getDomainName("foo.bar@xyz.com");
         assertThat(email).isEqualTo("xyz.com");
     }
 
     @Test
     void given_invalid_lookup_email_then_return_false() {
-        boolean isValidEmail = emailLookUp.validateEmail("nitesh.tiwari@xyz.com");
+        boolean isValidEmail = emailLookUp.validateEmail("foo.bar@xyz.com");
         assertThat(isValidEmail).isFalse();
     }
 
