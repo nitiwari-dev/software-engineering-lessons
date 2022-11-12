@@ -1,5 +1,5 @@
 ## Live Lessons
-- Mono repo to help budding software engineer in coding practices, tdd, dsa and involving technology
+- Mono repo to help software engineer grow in there career
 
 
 - [ ] Test Driven Development
