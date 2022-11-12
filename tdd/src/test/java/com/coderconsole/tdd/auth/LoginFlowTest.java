@@ -15,7 +15,7 @@ class LoginFlowTest {
     }
 
     @Test
-    void given_mobile_number_return_200() {
+    void given_valid_sequence_mobile_number_return_200() {
         assertThat(loginFlow
                 .isValidMobileNumber("9876543210"))
                 .isEqualTo(200);
@@ -29,7 +29,7 @@ class LoginFlowTest {
     }
 
     @Test
-    void given_invalid_mobile_number_return_400() {
+    void given_invalid_length_mobile_number_return_400() {
         assertThat(loginFlow
                 .isValidMobileNumber("1"))
                 .isEqualTo(400);
