@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  Test_Project:
+  TestSelectedProject:
 
     runs-on: ubuntu-latest
 
@@ -30,13 +30,12 @@ jobs:
     - name: Ouput File Changes
       run: echo '$'
       
-    - if: contains(steps.file_changes.outputs.files , '"tdd/')
+    - if: contains(steps.file_changes.outputs.files , 'tdd/')
       name: Build Maven Project
       run: |
         echo "Running test on path"
         pwd
         mvn test --file tdd/pom.xml
-
 
 
 #    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
