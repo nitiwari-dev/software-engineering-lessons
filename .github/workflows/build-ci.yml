@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  test_project:
+  Test Project:
 
     runs-on: ubuntu-latest
 
@@ -35,7 +35,7 @@ jobs:
       run: |
         echo "Running test on path"
         pwd
-        run: mvn test --file tdd/pom.xml
+        mvn test --file tdd/pom.xml
 
 
 
