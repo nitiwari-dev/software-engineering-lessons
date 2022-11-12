@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "build-workflow-1" ]
+    branches: [ "main" ]
     paths:
       - 'tdd'
   # pull_request:
