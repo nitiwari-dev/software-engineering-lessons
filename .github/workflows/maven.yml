@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'tdd'
+      - 'tdd/**'
   # pull_request:
   # branches: [ "main" ]
 
