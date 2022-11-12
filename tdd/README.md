@@ -32,7 +32,7 @@ Test Framework:
 `AssertJ`
 
 IDE:
-`IntelliJ IDEA`
+`IntelliJ IDEA Community/Enterprise`
 
 
 
