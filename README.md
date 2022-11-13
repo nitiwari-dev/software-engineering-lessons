@@ -7,7 +7,7 @@
 
 
 
-## Install pre-commit hook to run all the test case before any commit?
+## Install pre-commit hook to run all the test case before any commit
 ```sh
 sh scripts/install-hooks.sh
 ```
