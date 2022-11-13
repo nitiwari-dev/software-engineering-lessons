@@ -1,9 +1,8 @@
 #!/usr/bin/env sh
 
-echo "Pre-commit hook in action"
+echo "Pre-commit hook in action to run tests cases"
 
-cd back back || { echo "Cannot go back" ; exit 1;}
-
+chmod +x scripts/run-tests.sh
 scripts/run-tests.sh
 
 if [ $? -ne 0 ]; then
