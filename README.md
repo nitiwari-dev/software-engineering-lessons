@@ -3,3 +3,11 @@
 
 
 - [ ] Test Driven Development with Mock, Spy
+
+
+
+
+## Install pre-commit hook to run all the test case before any commit?
+```sh
+sh scripts/install-hooks.sh
+```
