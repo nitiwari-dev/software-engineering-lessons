@@ -1,10 +1,11 @@
 #!/usr/bin/env sh
 
-echo "Pre-commit hook in action to run tests cases"
+echo "Pre-commit hook in action ..."
 
 chmod +x scripts/run-tests.sh
 scripts/run-tests.sh
 
+# Check if the exit value of last command
 if [ $? -ne 0 ]; then
  echo "Tests failed!"
  exit 1
