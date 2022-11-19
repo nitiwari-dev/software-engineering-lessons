@@ -1,3 +1,4 @@
+[![Test | Build | Deploy](https://github.com/nitiwari-dev/engineering-lessons/actions/workflows/build-ci.yml/badge.svg)](https://github.com/nitiwari-dev/engineering-lessons/actions/workflows/build-ci.yml)
 ## Live Lessons
 - Mono repo to help software engineer grow in there career
 

@@ -1,3 +1,5 @@
+[![Test | Build | Deploy](https://github.com/nitiwari-dev/engineering-lessons/actions/workflows/build-ci.yml/badge.svg)](https://github.com/nitiwari-dev/engineering-lessons/actions/workflows/build-ci.yml)
+
 **Test Driven Development**
 
 Live HandsOn Demo on Test Driven Development using Mockito/Spy and JUnit:
