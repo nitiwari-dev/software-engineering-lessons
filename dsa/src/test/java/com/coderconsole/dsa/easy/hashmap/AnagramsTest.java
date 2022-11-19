@@ -23,16 +23,25 @@ class AnagramsTest {
     @DisplayName("Given empty list of anagrams return empty list")
     void groupAnagram_emptyAnagramList_returnEmpty() {
         var input = new ArrayList<String>();
-        var output = anagrams.groupAnagramWithSort(input);
+        var output = anagrams.groupAnagramBySort(input);
         assertThat(output).isEmpty();
     }
 
     @Test
-    @DisplayName("Given list of anagrams words group them together and return list of each group")
+    @DisplayName("Given list of anagrams words group them together using sort")
     void groupAnagram_listOfAnagrams_groupAnagramsUsingSorting() {
         var input = List.of("eat", "tea", "tan", "ate", "nat", "bat");
         var groups = List.of(List.of("eat", "tea", "ate"), List.of("tan", "nat"), List.of("bat"));
-        var output = anagrams.groupAnagramWithSort(input);
+        var output = anagrams.groupAnagramBySort(input);
+        assertThat(output).hasSize(groups.size()).hasSameElementsAs(groups);
+    }
+
+    @Test
+    @DisplayName("Given list of anagrams words group them using character count")
+    void groupAnagram_listOfAnagrams_groupAnagramsByCharacterCount() {
+        var input = List.of("eat", "tea", "tan", "ate", "nat", "bat");
+        var groups = List.of(List.of("eat", "tea", "ate"), List.of("tan", "nat"), List.of("bat"));
+        var output = anagrams.groupAnagramByCharacterCount(input);
         assertThat(output).hasSize(groups.size()).hasSameElementsAs(groups);
     }
 }
