@@ -33,8 +33,6 @@ class AnagramsTest {
         var input = List.of("eat", "tea", "tan", "ate", "nat", "bat");
         var groups = List.of(List.of("eat", "tea", "ate"), List.of("tan", "nat"), List.of("bat"));
         var output = anagrams.groupAnagramTogetherWithSorting(input);
-
         assertThat(output).hasSize(groups.size()).hasSameElementsAs(groups);
     }
-
 }
