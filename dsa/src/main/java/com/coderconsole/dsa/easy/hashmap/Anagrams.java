@@ -35,23 +35,23 @@ import java.util.List;
  */
 
 public class Anagrams {
-    public List<List<String>> groupAnagramTogetherWithSorting(List<String> input) {
-
+    public List<List<String>> groupAnagramBySort(List<String> input) {
         var map = new HashMap<String, List<String>>();
         for (String originalKey : input) {
             String sortedKey = getSortedKey(originalKey);
-            if (map.containsKey(sortedKey)) {
-                var group = map.get(sortedKey);
-                group.add(originalKey);
-                map.put(sortedKey, group);
-            } else {
-                var group = new ArrayList<String>();
-                group.add(originalKey);
-                map.put(sortedKey, group);
-            }
+            var group = map.getOrDefault(sortedKey, new ArrayList<>());
+            group.add(originalKey);
+            map.put(sortedKey, group);
         }
         return new ArrayList<>(map.values());
     }
+
+
+
+    public List<List<String>> groupAnagramByCharacterCount(List<String> input) {
+        return List.of();
+    }
+
 
     private String getSortedKey(String originalKey) {
         var chArray = originalKey.toCharArray();
