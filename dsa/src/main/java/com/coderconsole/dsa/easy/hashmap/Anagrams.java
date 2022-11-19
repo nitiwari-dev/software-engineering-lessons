@@ -46,13 +46,6 @@ public class Anagrams {
         return new ArrayList<>(map.values());
     }
 
-
-
-    public List<List<String>> groupAnagramByCharacterCount(List<String> input) {
-        return List.of();
-    }
-
-
     private String getSortedKey(String originalKey) {
         var chArray = originalKey.toCharArray();
         Arrays.sort(chArray);
