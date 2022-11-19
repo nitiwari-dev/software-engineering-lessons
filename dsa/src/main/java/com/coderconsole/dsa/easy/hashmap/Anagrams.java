@@ -35,8 +35,7 @@ import java.util.List;
  */
 
 public class Anagrams {
-    public List<List<String>> groupAnagramWithSort(List<String> input) {
-
+    public List<List<String>> groupAnagramBySort(List<String> input) {
         var map = new HashMap<String, List<String>>();
         for (String originalKey : input) {
             String sortedKey = getSortedKey(originalKey);
@@ -47,9 +46,36 @@ public class Anagrams {
         return new ArrayList<>(map.values());
     }
 
+    public List<List<String>> groupAnagramByCharacterCount(List<String> input) {
+        var map = new HashMap<String, List<String>>();
+        var charInput = new int[26];
+        for (String originalKey : input) {
+            Arrays.fill(charInput, 0);
+            var key =  getCharacterKey(originalKey, charInput);
+            var group = map.getOrDefault(key, new ArrayList<>());
+            group.add(originalKey);
+            map.put(key, group);
+        }
+        return new ArrayList<>(map.values());
+    }
+
     private String getSortedKey(String originalKey) {
         var chArray = originalKey.toCharArray();
         Arrays.sort(chArray);
         return new String(chArray);
+    }
+
+    private String getCharacterKey(String originalKey, int [] characterCount) {
+        for (char ch : originalKey.toCharArray()) {
+            characterCount[ch - 'a'] += 1;
+        }
+
+        var builder = new StringBuilder();
+        for (int count: characterCount){
+            builder.append("#");
+            builder.append(count);
+        }
+
+        return builder.toString();
     }
 }
