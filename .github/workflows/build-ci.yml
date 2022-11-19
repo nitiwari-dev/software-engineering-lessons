@@ -38,4 +38,8 @@ jobs:
       name: Build Maven Project
       run: |
         mvn test --file tdd/pom.xml
+    - if: contains(steps.file_changes.outputs.files , 'dsa/')
+      name: Build Maven Project
+      run: |
+        mvn test --file dsa/pom.xml    
         
