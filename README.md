@@ -1,10 +1,14 @@
 [![Test | Build | Deploy](https://github.com/nitiwari-dev/engineering-lessons/actions/workflows/build-ci.yml/badge.svg)](https://github.com/nitiwari-dev/engineering-lessons/actions/workflows/build-ci.yml)
-## Live Lessons
+## Engineering Lessons
 - Mono repo to help software engineer grow in there career
 
 
-- [ ] Test Driven Development with Mock, Spy
+- [x] Test Driven Development with Mock, Spy
 - [ ] DSA
+  - [ ] Easy
+    - [ ] HashMap
+      - [x] Anagrams
+      - [x] Target Pair
 
 
 
