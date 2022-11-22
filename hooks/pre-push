@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 
 echo "Pre-push hook in action ..."
+pwd
 chmod +x scripts/run-branch-name-check.sh
+scripts/run-branch-name-check.sh
 
 if [[ $? -ne 0 ]]; then
     echo "Local branch check failed"

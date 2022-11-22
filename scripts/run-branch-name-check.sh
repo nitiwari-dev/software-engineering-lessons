@@ -1,15 +1,11 @@
 #!/usr/bin/env sh
-echo "  Check local branch name..."
 
 local_branch=$(git rev-parse --abbrev-ref HEAD)
-accepted_branch="^((hotfix|conflict|bumpversion|revert|bug|fix|release|doc)(\/|-)[A-Za-z0-9._-]+$)"
-echo
-#check if the branch matching accepted branch pattern
-if [[ ! $local_branch =~ $accepted_branch ]];
+accepted_branch_name="feature|hotfix|conflict|bumpversion|revert|bug|fix|release|doc"
+accepted_branch_regex="^(($accepted_branch_name)(\/|-)[A-Za-z0-9._-]+$)"
+
+if [[ ! $local_branch =~ $accepted_branch_regex ]];
 then
-  echo "Branch name \` $local_branch \` is not accepted format in regex!"
-  echo "$accepted_branch"
+  echo "Branch name \`$local_branch\` is not in accepted format viz - $accepted_branch_name"
   exit 1
 fi
-
-exit 0
