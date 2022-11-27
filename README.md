@@ -9,6 +9,8 @@
     - [ ] HashMap
       - [x] Anagrams
       - [x] Target Pair
+- [] DevOps
+  - Linux Commands
 
 
 
