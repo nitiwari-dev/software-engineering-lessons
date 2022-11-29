@@ -16,3 +16,8 @@ find . -iname '*.jpg'
 ```bash
 nproc
 ```
+
+### Replace some text in file using sed from input.txt i.e replace $version to 1.0.1 in file input.txt
+```bash
+sed -i -e 's/$version/1.0.1/g' input.txt
+```
