@@ -21,3 +21,11 @@ nproc
 ```bash
 sed -i -e 's/$version/1.0.1/g' input.txt
 ```
+
+### Find the os-release
+cat /etc/os-relese
+
+### Find Local time
+```bash
+cat -l /etc/localtime
+```
