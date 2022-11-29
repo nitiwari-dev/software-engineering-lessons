@@ -29,3 +29,11 @@ cat /etc/os-relese
 ```bash
 cat -l /etc/localtime
 ```
+
+### Find the os-release
+cat /etc/os-release
+
+### Find Local time
+```bash
+cat -l /etc/localtime
+```
