@@ -4,6 +4,9 @@ import (
 	"errors"
 	"fun-with-golang/helper"
 	"math"
+	"math/rand"
+	"reflect"
+	"unicode/utf8"
 )
 
 func Init() {
@@ -12,9 +15,119 @@ func Init() {
 	iterations()
 	storageDataStructure()
 	functions()
+	closures()
+	recursion()
+	pointers()
+	stringAndUTF8()
+}
+
+/**
+Ref: https://gobyexample.com/strings-and-runes
+
+In Go, the concept of a character is called a rune -
+it’s an integer that represents a Unicode code point.
+This Go blog post is a good introduction to the topic.
+https://go.dev/blog/strings
+*/
+func stringAndUTF8() {
+	helper.Println("Starting String with UTF-8")
+	const name = "foo"
+	helper.Println(utf8.RuneCountInString(name))
+	for index, runeValue := range name {
+		helper.Println(index, runeValue)
+	}
+}
+
+func pointers() {
+	helper.Println("Starting pointers")
+	i := 10
+	helper.Println("Address of i", &i)
+	passByValue(i)
+	helper.Println(i)
+
+	passByPointer()
+	helper.Println(i) // This will be printed as i = 0. Because we de-referenced it within the function
+}
+
+/**
+* refere to value to which the pointer references eg.*i
+& address to the variable
+
+*/
+func passByPointer() {
+	var count = 4
+	helper.Println("count=", count)
+	var countAddr = &count //new variable to the address of count
+	helper.Println("count", &count)
+	helper.Println("countAddr", &countAddr)
+	helper.Println("count pointer value=", *countAddr)
+	*countAddr = 10                                // change the pointer value to 10
+	helper.Println("count change pointer=", count) // value will be changed to 10
+	helper.Println("count change pointer=", countAddr)
+
+	//struct modification
+	userStructModification()
+}
+
+func userStructModification() {
+	helper.Println("Start Pointer with structs")
+	user := User{name: "Foo", id: 10}
+	helper.Println(user)
+	modifyUserStruct(&user)
+	helper.Println(user)
+
+	//Create user with new
+
+	newUser := *new(User)
+	helper.Println(newUser)
+	helper.Println(reflect.TypeOf(newUser)) // pointer
+}
+
+func modifyUserStruct(user *User) {
+	user.name = "Bar"
+	user.id = 20
+}
+
+type User struct {
+	name string
+	id   int64
+}
+
+func passByValue(i int) {
+	i = 0 //changing the value of the variable
+}
+
+func recursion() {
+	var findNext func(interval int) int // using closure with recursion
+	findNext = func(interval int) int {
+		if interval == 0 {
+			return 0
+		} else {
+			return interval + findNext(interval-1)
+		}
+	}
+
+	helper.Println(findNext(4))
+}
+
+func closures() {
+	helper.Println("Starting closures")
+
+	interval := 10
+	nextInt := nextRandomInt(interval)
+	helper.Println(nextInt())
+	helper.Println(nextInt())
+	helper.Println(nextInt())
+	helper.Println(nextInt())
+}
+func nextRandomInt(interval int) func() int {
+	return func() int {
+		return rand.Intn(interval)
+	}
 }
 
 func functions() {
+	helper.Println("Starting functions")
 	id := "124"
 	httpCode, err := loginUser(id)
 	if err != nil {
