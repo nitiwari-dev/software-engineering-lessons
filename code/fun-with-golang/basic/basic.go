@@ -2,6 +2,7 @@ package basic
 
 import (
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"errors"
 	"fun-with-golang/helper"
 	"math/rand"
@@ -223,6 +224,9 @@ func storageDataStructure() {
 	}
 
 =======
+=======
+	"errors"
+>>>>>>> 86c14fc (Lession go | variadic function)
 	"fun-with-golang/helper"
 	"math"
 )
@@ -232,12 +236,40 @@ func Init() {
 	variables()
 	iterations()
 	storageDataStructure()
+	functions()
+}
+
+func functions() {
+	id := "124"
+	httpCode, err := loginUser(id)
+	if err != nil {
+		helper.Println(httpCode, err.Error())
+	} else {
+		helper.Println(httpCode, "")
+	}
+
+	idsVariadic(1, 2, 3, 4)           // variadic function
+	idsVariadic([]int{1, 2, 3, 4}...) // variadic with slice add ... to mark it as variadic
+}
+
+func idsVariadic(ids ...int) {
+	for _, id := range ids {
+		helper.Println(id)
+	}
+}
+
+func loginUser(id string) (int, error) {
+	if len(id) == 0 {
+		return 400, errors.New("invalid input: `id` cannot be blank")
+	}
+	return 200, nil
+
 }
 
 func storageDataStructure() {
 	//Arrays
 	var array [5]int
-	helper.Println("array", array)
+	helper.Println(array)
 
 	arrayValues := [5]int{1, 2, 3}
 	helper.Println(arrayValues)
