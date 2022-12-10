@@ -9,6 +9,60 @@ func Init() {
 	helloWorld()
 	variables()
 	iterations()
+	storageDataStructure()
+}
+
+func storageDataStructure() {
+	//Arrays
+	var array [5]int
+	helper.Println("array", array)
+
+	arrayValues := [5]int{1, 2, 3}
+	helper.Println(arrayValues)
+	helper.Println(arrayValues[2])
+	arrayValues[2] = arrayValues[2] * 2
+	helper.Println(arrayValues[2])
+	helper.Println(len(arrayValues))
+
+	//Slice ~ to Advanced form of Array
+	countryList := make([]string, 1)
+	countryList[0] = "in"
+	helper.Println(countryList)
+	countryList = append(countryList, "eg", "ph", "sa", "za")
+	helper.Println(countryList)
+	helper.Println(countryList[2:]) // from 2 to end
+	helper.Println(countryList[:2]) // from 0 to 1 (end - 1)
+
+	//Map - KV pair
+	mapCountryByCode := make(map[string]string) // declare empty map
+	mapCountryByCode["eg"] = "Egypt"
+	mapCountryByCode["za"] = "South Africa"
+	helper.Println(mapCountryByCode) // Print the map
+
+	helper.Println(mapCountryByCode["eg"])              // Access by key
+	helper.Println(mapCountryByCode["in"])              // Invalid key access return empty
+	_, isINCountryCodePresent := mapCountryByCode["in"] // Invalid key access return boolean viz false
+	helper.Println(isINCountryCodePresent)
+
+	helper.Println(len(mapCountryByCode)) // Number of key value pair
+	delete(mapCountryByCode, "eg")        // Delete a key
+	helper.Println(mapCountryByCode)
+
+	//Range - perform operation on arrays and slices
+	ages := []int{10, 25, 30, 21} // over the array
+	sum := 0
+	for _, age := range ages {
+		sum += age
+	}
+	helper.Println(sum / len(ages))
+
+	for countryCode, countryName := range mapCountryByCode { // over the map
+		helper.Println(countryCode, countryName)
+	}
+
+	for index, character := range "Hello" { // over string
+		helper.Println(index, character)
+	}
 
 }
 
