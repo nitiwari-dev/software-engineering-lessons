@@ -3,7 +3,6 @@ package basic
 import (
 	"errors"
 	"fun-with-golang/helper"
-	"math"
 	"math/rand"
 	"reflect"
 	"unicode/utf8"
@@ -244,8 +243,6 @@ func iterations() {
 	}
 
 }
-
-const PI = math.Pi
 
 func variables() {
 
