@@ -62,7 +62,7 @@ func storageDataStructure() {
 	helper.Println(countryList[2:]) // from 2 to end
 	helper.Println(countryList[:2]) // from 0 to 1 (end - 1)
 
-	//Map - KV pair
+	//Map - KV pairg
 	mapCountryByCode := make(map[string]string) // declare empty map
 	mapCountryByCode["eg"] = "Egypt"
 	mapCountryByCode["za"] = "South Africa"
