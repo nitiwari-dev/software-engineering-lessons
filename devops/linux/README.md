@@ -28,7 +28,9 @@ cat -l /etc/localtime
 ```
 
 ### Find the os-release
+``` bash
 cat /etc/os-release
+```
 
 ### Find Local time
 ```bash
