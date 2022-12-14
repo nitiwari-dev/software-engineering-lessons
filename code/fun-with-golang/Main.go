@@ -1,9 +1,11 @@
 package main
 
 import (
-	basic "fun-with-golang/basic"
+	"fun-with-golang/basic"
+	"fun-with-golang/medium"
 )
 
 func main() {
 	basic.Init()
+	medium.Init()
 }
