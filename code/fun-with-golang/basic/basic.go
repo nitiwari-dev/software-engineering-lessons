@@ -3,7 +3,6 @@ package basic
 import (
 	"errors"
 	"fun-with-golang/helper"
-	"math"
 	"math/rand"
 	"reflect"
 	"unicode/utf8"
@@ -35,6 +34,20 @@ func stringAndUTF8() {
 	helper.Println(utf8.RuneCountInString(name))
 	for index, runeValue := range name {
 		helper.Println(index, runeValue)
+	}
+
+	//
+	symbolic := "日本語"
+	helper.Println(len(symbolic))                    // We cannot rely on len as its not equal to no. of characters. Its equal to no of bytes altogether in the  UTF-8
+	helper.Println(utf8.RuneCountInString(symbolic)) // Prints 3
+
+	for index, character := range symbolic { //converting to string
+		helper.Println(index, string(character))
+	}
+
+	runeArray := []rune(symbolic)             // using unicode point. its Like creating array of unicode
+	for index, character := range runeArray { //decode each rune value
+		helper.Println(index, string(character))
 	}
 }
 
@@ -230,8 +243,6 @@ func iterations() {
 	}
 
 }
-
-const PI = math.Pi
 
 func variables() {
 
