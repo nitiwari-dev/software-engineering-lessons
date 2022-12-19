@@ -1,29 +1,63 @@
 package medium
 
-import "fun-with-golang/helper"
+import (
+	"fun-with-golang/helper"
+	"math"
+)
 
 func Init() {
+	helper.Println("Starting medium section...")
 	structs()
 	methodsInStructs()
 	interfaces()
+	generics()
+	helper.Println("Ending medium section...")
+
+}
+
+func generics() {
+
 }
 
 func interfaces() {
-
+	i := arithmetic{input: -11}
+	callInterface(i)
 }
 
-type maths interface {
-	calculate() int64
+func callInterface(eval evaluate) {
+	helper.Println(eval.abs())
 }
 
-func (c calculation) calculate() {
+type evaluate interface {
+	abs() float64
+}
 
+type arithmetic struct {
+	input float64
+}
+
+func (c arithmetic) abs() float64 {
+	return math.Abs(c.input)
 }
 
 func methodsInStructs() {
 	c := calculation{input: 10}
 	helper.Println(c.square())
 	helper.Println(c.cube())
+	helper.Println(c.squareRoot())
+
+	u := user{
+		id:      1,
+		name:    "foobar",
+		usrType: "free",
+		address: address{
+			pincode: "",
+		},
+	}
+
+	helper.Println(u)
+	helper.Println(u.pincode)
+	helper.Println(u.validateAddress()) // access the embeded function
 }
 
 type calculation struct {
@@ -36,6 +70,10 @@ func (c calculation) square() int64 {
 
 func (c calculation) cube() int64 {
 	return c.input * c.input * c.input
+}
+
+func (c calculation) squareRoot() float64 {
+	return math.Sqrt(float64(c.input))
 }
 
 func structs() {
@@ -57,6 +95,19 @@ func newUser(id int, name string) user { // we can also return *. Its better to 
 }
 
 type user struct {
-	id   int
-	name string
+	id      int
+	name    string
+	usrType string
+	address
+}
+
+type address struct {
+	pincode string
+}
+
+func (address address) validateAddress() bool {
+	if len(address.pincode) <= 0 {
+		return false
+	}
+	return true
 }

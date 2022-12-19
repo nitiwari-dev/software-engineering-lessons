@@ -9,6 +9,7 @@ import (
 )
 
 func Init() {
+	helper.Println("Starting easy section...")
 	helloWorld()
 	variables()
 	iterations()
@@ -18,6 +19,7 @@ func Init() {
 	recursion()
 	pointers()
 	stringAndUTF8()
+	helper.Println("Ending easy section...")
 }
 
 /**
