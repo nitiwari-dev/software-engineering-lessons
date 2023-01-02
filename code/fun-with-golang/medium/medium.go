@@ -1,7 +1,6 @@
 package medium
 
 import (
-	"errors"
 	"fun-with-golang/helper"
 	"math"
 )
@@ -56,7 +55,7 @@ func methodsInStructs() {
 		},
 		alternateNumbers: alternateNumbers{
 			[]string{"1234567890", "9876543210"},
-		},
+		}
 	}
 
 	helper.Println(u)
@@ -105,10 +104,6 @@ type user struct {
 	usrType string
 	address
 	alternateNumbers alternateNumbers
-}
-
-type alternateNumbers struct {
-	numbers []string
 }
 
 type address struct {
