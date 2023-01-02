@@ -1,6 +1,7 @@
 package basic
 
 import (
+<<<<<<< HEAD
 	"errors"
 	"fun-with-golang/helper"
 	"math/rand"
@@ -221,6 +222,17 @@ func storageDataStructure() {
 		helper.Println(index, character)
 	}
 
+=======
+	"fun-with-golang/helper"
+	"math"
+)
+
+func Init() {
+	helloWorld()
+	variables()
+	iterations()
+
+>>>>>>> 80df7ad (fun with go)
 }
 
 func iterations() {
@@ -246,6 +258,11 @@ func iterations() {
 
 }
 
+<<<<<<< HEAD
+=======
+const PI = math.Pi
+
+>>>>>>> 80df7ad (fun with go)
 func variables() {
 
 	const pi = 3.1415

@@ -1,1 +1,9 @@
-package fun_with_golang
+package main
+
+import (
+	basic "fun-with-golang/basic"
+)
+
+func main() {
+	basic.Init()
+}
