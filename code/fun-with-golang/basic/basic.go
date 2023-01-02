@@ -3,13 +3,13 @@ package basic
 import (
 	"errors"
 	"fun-with-golang/helper"
+	"math"
 	"math/rand"
 	"reflect"
 	"unicode/utf8"
 )
 
 func Init() {
-	helper.Println("Starting easy section...")
 	helloWorld()
 	variables()
 	iterations()
@@ -19,7 +19,6 @@ func Init() {
 	recursion()
 	pointers()
 	stringAndUTF8()
-	helper.Println("Ending easy section...")
 }
 
 /**
@@ -37,20 +36,6 @@ func stringAndUTF8() {
 	for index, runeValue := range name {
 		helper.Println(index, runeValue)
 	}
-
-	//
-	symbolic := "日本語"
-	helper.Println(len(symbolic))                    // We cannot rely on len as its not equal to no. of characters. Its equal to no of bytes altogether in the  UTF-8
-	helper.Println(utf8.RuneCountInString(symbolic)) // Prints 3
-
-	for index, character := range symbolic { //converting to string
-		helper.Println(index, string(character))
-	}
-
-	runeArray := []rune(symbolic)             // using unicode point. its Like creating array of unicode
-	for index, character := range runeArray { //decode each rune value
-		helper.Println(index, string(character))
-	}
 }
 
 func pointers() {
@@ -65,7 +50,7 @@ func pointers() {
 }
 
 /**
-* refere to value to which the pointer references eg.*i
+* referer to value to which the pointer references eg.*i
 & address to the variable
 
 */
@@ -190,7 +175,7 @@ func storageDataStructure() {
 	helper.Println(countryList[2:]) // from 2 to end
 	helper.Println(countryList[:2]) // from 0 to 1 (end - 1)
 
-	//Map - KV pairg
+	//Map - KV pair
 	mapCountryByCode := make(map[string]string) // declare empty map
 	mapCountryByCode["eg"] = "Egypt"
 	mapCountryByCode["za"] = "South Africa"
@@ -220,7 +205,6 @@ func storageDataStructure() {
 	for index, character := range "Hello" { // over string
 		helper.Println(index, character)
 	}
-
 }
 
 func iterations() {
@@ -246,6 +230,8 @@ func iterations() {
 
 }
 
+const PI = math.Pi
+
 func variables() {
 
 	const pi = 3.1415
@@ -263,6 +249,7 @@ func variables() {
 	helper.Println(taxRate)   // Floats
 	helper.Println(city)      // String
 	helper.Println(pi)        // Constant local scope is of higher precedence
+	helper.Println(PI)
 }
 func helloWorld() {
 	helper.Println("Hello world")

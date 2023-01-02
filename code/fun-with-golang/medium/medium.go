@@ -1,6 +1,7 @@
 package medium
 
 import (
+	"errors"
 	"fun-with-golang/helper"
 	"math"
 )
@@ -53,11 +54,15 @@ func methodsInStructs() {
 		address: address{
 			pincode: "",
 		},
+		alternateNumbers: alternateNumbers{
+			[]string{"1234567890", "9876543210"},
+		},
 	}
 
 	helper.Println(u)
 	helper.Println(u.pincode)
 	helper.Println(u.validateAddress()) // access the embeded function
+	helper.Println(u.alternateNumbers.validateAlternateNumbers())
 }
 
 type calculation struct {
@@ -99,6 +104,11 @@ type user struct {
 	name    string
 	usrType string
 	address
+	alternateNumbers alternateNumbers
+}
+
+type alternateNumbers struct {
+	numbers []string
 }
 
 type address struct {
@@ -110,4 +120,11 @@ func (address address) validateAddress() bool {
 		return false
 	}
 	return true
+}
+
+func (numbers alternateNumbers) validateAlternateNumbers() (bool, error) {
+	if len(numbers.numbers) == 0 {
+		return false, errors.New("alternate number cannot be zero")
+	}
+	return true, nil
 }
