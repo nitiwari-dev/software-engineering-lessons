@@ -5,6 +5,7 @@ import (
 <<<<<<< HEAD
 	"errors"
 	"fun-with-golang/helper"
+<<<<<<< HEAD
 	"math/rand"
 	"reflect"
 	"unicode/utf8"
@@ -229,6 +230,8 @@ func storageDataStructure() {
 >>>>>>> 86c14fc (Lession go | variadic function)
 	"fun-with-golang/helper"
 	"math"
+=======
+>>>>>>> 97690bd (Lession | Golang | Refactor)
 	"math/rand"
 	"reflect"
 	"unicode/utf8"
@@ -458,10 +461,13 @@ func iterations() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 const PI = math.Pi
 
 >>>>>>> 80df7ad (fun with go)
+=======
+>>>>>>> 97690bd (Lession | Golang | Refactor)
 func variables() {
 
 	const pi = 3.1415
