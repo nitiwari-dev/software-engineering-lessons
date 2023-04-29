@@ -21,7 +21,8 @@ func Init() {
 	stringAndUTF8()
 }
 
-/**
+/*
+*
 Ref: https://gobyexample.com/strings-and-runes
 
 In Go, the concept of a character is called a rune -
@@ -47,12 +48,28 @@ func pointers() {
 
 	passByPointer()
 	helper.Println(i) // This will be printed as i = 0. Because we de-referenced it within the function
+
+	var clientResponse = ClientResponse{}
+	const errorCode = "1001"
+	helper.Println("Before pointer " + clientResponse.errorMessage)
+	clientResponse.appendErrorCode(errorCode)
+	helper.Println("After pointer " + clientResponse.errorMessage)
+
 }
 
-/**
+type ClientResponse struct {
+	errorMessage string
+}
+
+func (response *ClientResponse) appendErrorCode(errorCode string) {
+	errorGenericMessage := "We are unable to process your request at this moment. please try again later"
+	response.errorMessage = "[" + errorCode + "]" + errorGenericMessage
+}
+
+/*
+*
 * referer to value to which the pointer references eg.*i
 & address to the variable
-
 */
 func passByPointer() {
 	var count = 4

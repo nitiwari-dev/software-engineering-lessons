@@ -82,6 +82,7 @@ func (c calculation) squareRoot() float64 {
 }
 
 func structs() {
+	helper.Println("  Staring structs...")
 	user1 := user{id: 10, name: "Foo"}
 	helper.Println(user1)
 
