@@ -4,19 +4,40 @@ import (
 	"errors"
 	"fun-with-golang/helper"
 	"math"
+	"time"
 )
 
 func Init() {
 	helper.Println("Starting medium section...")
 	structs()
+	deferFunction()
 	methodsInStructs()
 	interfaces()
 	generics()
+	time.Now().Day()
 	helper.Println("Ending medium section...")
 
 }
 
-func generics() {
+/*
+*
+defer
+1. its defer the call and will not excecute till the calls after that is execute
+2. defer stores the call in stack and pop in LIFO manner
+3. Notice when the execution are defered it goes in stack
+*/
+func deferFunction() {
+
+	helper.Println("starting defer example")
+	for i := 0; i < 10; i++ {
+		defer helper.Println("Defer", i)
+	}
+
+	helper.Println("completed defer example")
+
+}
+
+func generics() { // also called as type parameter
 
 }
 
