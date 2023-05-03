@@ -1,6 +1,6 @@
 ## Fun with golang (learning timeline 2 weeks)
 
-- [ ] Basics using https://gobyexample.com/
+- [ ] Basics using https://gobyexample.com/ and https://go.dev/tour/list
 - [ ] Medium
 - [ ] TDD with go
 - [ ] Build Go with Containers

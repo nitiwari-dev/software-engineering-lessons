@@ -68,21 +68,23 @@ func methodsInStructs() {
 	helper.Println(c.cube())
 	helper.Println(c.squareRoot())
 
-	u := user{
+	u := User{
 		id:      1,
 		name:    "foobar",
 		usrType: "free",
-		address: address{
-			pincode: "",
+		address: []Address{
+			{pincode: "400000"},
+			{pincode: "400001"},
 		},
-		alternateNumbers: alternateNumbers{
+		alternateNumbers: AlternateNumbers{
 			[]string{"1234567890", "9876543210"},
 		},
 	}
 
 	helper.Println(u)
-	helper.Println(u.pincode)
-	helper.Println(u.validateAddress()) // access the embeded function
+	helper.Println(u.address)
+	helper.Println(len(u.address) > 0)
+	helper.Println(u.address[0].validateAddress()) // access the embeded function
 	helper.Println(u.alternateNumbers.validateAlternateNumbers())
 }
 
@@ -104,7 +106,7 @@ func (c calculation) squareRoot() float64 {
 
 func structs() {
 	helper.Println("  Staring structs...")
-	user1 := user{id: 10, name: "Foo"}
+	user1 := User{id: 10, name: "Foo"}
 	helper.Println(user1)
 
 	user2 := newUser(11, "Bar")
@@ -117,34 +119,34 @@ func structs() {
 	helper.Println(*newId)
 }
 
-func newUser(id int, name string) user { // we can also return *. Its better to keep it immutable
-	return user{id: id, name: name}
+func newUser(id int, name string) User { // we can also return *. Its better to keep it immutable
+	return User{id: id, name: name}
 }
 
-type user struct {
-	id      int
-	name    string
-	usrType string
-	address
-	alternateNumbers alternateNumbers
+type User struct {
+	id               int
+	name             string
+	usrType          string
+	address          []Address
+	alternateNumbers AlternateNumbers
 }
 
-type alternateNumbers struct {
+type AlternateNumbers struct {
 	numbers []string
 }
 
-type address struct {
+type Address struct {
 	pincode string
 }
 
-func (address address) validateAddress() bool {
+func (address Address) validateAddress() bool {
 	if len(address.pincode) <= 0 {
 		return false
 	}
 	return true
 }
 
-func (numbers alternateNumbers) validateAlternateNumbers() (bool, error) {
+func (numbers AlternateNumbers) validateAlternateNumbers() (bool, error) {
 	if len(numbers.numbers) == 0 {
 		return false, errors.New("alternate number cannot be zero")
 	}
