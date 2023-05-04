@@ -2,9 +2,10 @@ package medium
 
 import (
 	"errors"
+	"fmt"
 	"fun-with-golang/helper"
 	"math"
-	"time"
+	"strconv"
 )
 
 func Init() {
@@ -14,9 +15,67 @@ func Init() {
 	methodsInStructs()
 	interfaces()
 	generics()
-	time.Now().Day()
+	typAssertions()
+	typeStringerExample()
 	helper.Println("Ending medium section...")
+}
 
+/*
+*
+Relate to toString() in java or kotlin
+*/
+func typeStringerExample() {
+	user := User{name: "NT", id: 123}
+	helper.Println(user)
+
+	hosts := map[string]IPAddr{
+		"loopback":  {127, 0, 0, 1},
+		"googleDNS": {8, 8, 8, 8},
+	}
+	for name, ip := range hosts {
+		fmt.Printf("%v: %v\n", name, ip)
+	}
+}
+
+type IPAddr [4]byte
+
+func (ip IPAddr) String() string {
+	var output = ""
+	var isFirst = true
+	for _, value := range ip {
+		if isFirst {
+			output += strconv.Itoa(int(value))
+			isFirst = false
+		} else {
+			output += "." + strconv.Itoa(int(value))
+		}
+	}
+	return output
+}
+
+func (user User) String() string {
+	return fmt.Sprintf("custom implemention for user name= %v and id=%v", user.name, user.id)
+}
+
+func typAssertions() {
+	helper.Println("Type Assertions")
+	var i interface{} = "Hello"
+	helper.Println(i.(string))
+	//helper.Println(i.(int64)) // trigger panic as it's not of correct type
+	a, ok := i.(int64)
+	helper.Println(a, ok)
+
+	typeAssertionSwitch("123")
+	typeAssertionSwitch(1)
+}
+
+func typeAssertionSwitch(i interface{}) {
+	switch v := i.(type) {
+	case string:
+		helper.Println(v, "is string type length is", len(v))
+	case int:
+		helper.Println(v, "is int type")
+	}
 }
 
 /*
