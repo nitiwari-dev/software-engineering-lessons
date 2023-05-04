@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"fun-with-golang/helper"
 	"math"
+	"strconv"
 )
 
 func Init() {
@@ -25,6 +26,30 @@ Relate to toString() in java or kotlin
 func typeStringerExample() {
 	user := User{name: "NT", id: 123}
 	helper.Println(user)
+
+	hosts := map[string]IPAddr{
+		"loopback":  {127, 0, 0, 1},
+		"googleDNS": {8, 8, 8, 8},
+	}
+	for name, ip := range hosts {
+		fmt.Printf("%v: %v\n", name, ip)
+	}
+}
+
+type IPAddr [4]byte
+
+func (ip IPAddr) String() string {
+	var output = ""
+	var isFirst = true
+	for _, value := range ip {
+		if isFirst {
+			output += strconv.Itoa(int(value))
+			isFirst = false
+		} else {
+			output += "." + strconv.Itoa(int(value))
+		}
+	}
+	return output
 }
 
 func (user User) String() string {
