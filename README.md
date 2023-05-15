@@ -19,3 +19,7 @@
 ```sh
 sh scripts/install-hooks.sh
 ```
+
+## Branch name should start with
+- HEAD|feature|hotfix|conflict|bumpversion|revert|bug|fix|release|doc
+- ex: feature_go
