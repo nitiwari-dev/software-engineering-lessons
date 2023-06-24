@@ -67,10 +67,12 @@ func (response *ClientResponse) appendErrorCode(errorCode string) {
 }
 
 /*
-*
 * referer to value to which the pointer references eg.*i
-& address to the variable
-*/
+* & address to the variable
+
+* So, pointers in Go are like pieces of paper with memory addresses that allow you to indirectly access and modify values, but you need to be mindful of their
+* validity and make sure you don't lose track of them.
+ */
 func passByPointer() {
 	var count = 4
 	helper.Println("count=", count)
@@ -128,7 +130,7 @@ func recursion() {
 }
 
 func closures() {
-	helper.Println("Starting closures")
+	helper.Println("Starting closures") // Functions bound to the variable accessing outside the scope
 
 	interval := 10
 	nextInt := nextRandomInt(interval)
@@ -174,6 +176,7 @@ func loginUser(id string) (int, error) {
 func storageDataStructure() {
 	//Arrays
 	var array [5]int
+
 	helper.Println(array)
 
 	arrayValues := [5]int{1, 2, 3}
