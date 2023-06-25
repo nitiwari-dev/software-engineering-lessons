@@ -14,7 +14,79 @@ func Init() {
 	timeExample()
 	goroutines()
 	channels()
+	selectChannels()
+	timeouts()
+	timer()
 	helper.Println("Ending Hard section...")
+}
+
+func timer() {
+	cronTimer := time.NewTimer(2 * time.Second)
+	<-cronTimer.C // Block and then excecute
+	fmt.Println("execute after 2 seconds")
+
+	//using ticker
+	ticker := time.NewTicker(500 * time.Millisecond) // ticker with 500mx
+	status := make(chan bool, 1)                     // status to stop
+	go func() {
+		for {
+			select {
+			case done := <-status:
+				fmt.Println("Timer status: ", done)
+			case t := <-ticker.C:
+				fmt.Println("Timer ticking", t)
+			}
+		}
+	}()
+
+	time.Sleep(1500 * time.Millisecond)
+	status <- true
+}
+
+func timeouts() {
+	in := make(chan string, 1)
+
+	go func() {
+		time.Sleep(3 * time.Second)
+		in <- "incoming"
+	}()
+
+	//timeout select - timeout while accessing the <-in channel
+	select {
+	case message := <-in:
+		helper.Println("incoming", message)
+	case <-time.After(2 * time.Second):
+		helper.Println("incoming timeout")
+	}
+
+	//NOTE: We can use default case to apply non-blocking channel operations
+}
+
+/**
+* select multiple goroutines with blocking operation
+ */
+func selectChannels() {
+	in := make(chan string, 1)
+	out := make(chan string, 1)
+
+	go func() {
+		time.Sleep(1 * time.Second)
+		in <- "in"
+	}()
+
+	go func() {
+		time.Sleep(2 * time.Second)
+		out <- "out"
+	}()
+
+	for i := 0; i < 2; i++ {
+		select {
+		case inMessage := <-in:
+			fmt.Println("Incoming message", inMessage)
+		case outMessage := <-out:
+			fmt.Println("Outgoing message", outMessage)
+		}
+	}
 }
 
 /*
@@ -43,6 +115,38 @@ func channels() {
 
 	<-completed // wait till the goroutines returns status as done
 
+	//direction incoming and outgoing
+	in := make(chan string, 1)
+	out := make(chan string, 1)
+
+	incoming("incoming and outgoing", in)
+	outgoing(in, out)
+	helper.Println(<-out)
+
+	//closing channel
+	close(in)
+	close(out)
+
+	//range over the channel
+	statusRange := make(chan string, 3)
+	statusRange <- "Todo"
+	statusRange <- "In Progress"
+	statusRange <- "Done"
+	close(statusRange)
+
+	for status := range statusRange {
+		helper.Println(status)
+	}
+
+}
+
+func outgoing(in chan string, out chan string) {
+	msg := <-in
+	out <- msg
+}
+
+func incoming(s string, in chan string) {
+	in <- s
 }
 
 func goroutines() {
