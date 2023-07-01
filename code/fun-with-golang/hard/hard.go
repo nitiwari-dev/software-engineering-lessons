@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"fun-with-golang/helper"
 	"os"
+	"sync"
 	"time"
 )
 
@@ -17,7 +18,103 @@ func Init() {
 	selectChannels()
 	timeouts()
 	timer()
+	workers()
+	waitgroup()
+	rateLimiting()
 	helper.Println("Ending Hard section...")
+}
+
+func rateLimiting() {
+	const requestCount = 5
+	request := make(chan int, requestCount)
+	for i := 1; i <= requestCount; i++ {
+		request <- i
+	}
+
+	close(request)
+
+	limiter := time.Tick(500 * time.Millisecond)
+
+	for req := range request {
+		<-limiter // blocker and after every 500 ms its excecuted
+		fmt.Println("request of ", req, "at", time.Now())
+	}
+
+	burstLimiter := make(chan time.Time, 3) // 3 event burst
+	for i := 0; i < 3; i++ {
+		burstLimiter <- time.Now()
+	}
+
+	//every 200 ms lets add to burstLimiter
+	go func() {
+		for t := range time.Tick(500 * time.Millisecond) {
+			burstLimiter <- t
+		}
+	}()
+
+	//similate 5 request
+	limiterReq := make(chan int, requestCount)
+	for i := 1; i <= requestCount; i++ {
+		limiterReq <- i
+	}
+	close(limiterReq)
+
+	for r := range limiterReq {
+		<-burstLimiter
+		fmt.Println("request of limiter", r, time.Now())
+	}
+
+}
+
+func waitgroup() {
+	//declare
+	var wg sync.WaitGroup
+
+	for i := 0; i < 3; i++ {
+		wg.Add(1)
+
+		go func() {
+			defer wg.Done()
+			unitWork(i)
+		}()
+	}
+
+	wg.Wait()
+}
+
+func unitWork(input int) {
+	fmt.Println("Unit work started", input)
+	time.Sleep(time.Second)
+	fmt.Println("Unit work completed", input)
+}
+
+func workers() {
+	const jobsCount = 5
+	jobs := make(chan int, jobsCount)
+	result := make(chan int, jobsCount)
+
+	for workerId := 1; workerId <= 5; workerId++ {
+		go asyncWork(jobs, result, workerId)
+	}
+
+	//assign jobs to worker
+	for i := 1; i <= jobsCount; i++ {
+		jobs <- i
+	}
+	close(jobs)
+
+	for j := 1; j <= jobsCount; j++ {
+		fmt.Println("result", <-result)
+	}
+}
+
+func asyncWork(job <-chan int, result chan<- int, workerId int) {
+	for j := range job {
+		fmt.Println("worker start", workerId, j)
+		//time.Sleep(100 * time.Millisecond)
+		fmt.Println("worker end ", workerId, j, "done")
+		result <- j * 2
+	}
 }
 
 func timer() {
@@ -33,14 +130,17 @@ func timer() {
 			select {
 			case done := <-status:
 				fmt.Println("Timer status: ", done)
+				return
 			case t := <-ticker.C:
 				fmt.Println("Timer ticking", t)
 			}
 		}
 	}()
 
-	time.Sleep(1500 * time.Millisecond)
+	time.Sleep(1600 * time.Millisecond)
+	ticker.Stop()
 	status <- true
+	fmt.Println("Timer stoppped")
 }
 
 func timeouts() {
