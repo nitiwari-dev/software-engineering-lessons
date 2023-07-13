@@ -1,13 +1,18 @@
 package com.coderconsole.dsa.easy.hashmap
 
-import org.assertj.core.api.AssertionsForClassTypes
-import org.junit.jupiter.api.BeforeEach
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class TargetPairTest {
-    private var targetPair: TargetPair? = null
-    @BeforeEach
+
+    private lateinit var targetPair: TargetPair
+
+    @BeforeAll
     fun setUp() {
         targetPair = TargetPair()
     }
@@ -17,8 +22,8 @@ internal class TargetPairTest {
     fun targetPair_pairExists_returnTrue() {
         val target = 10
         val input = listOf(3, 4, 5, 5)
-        val output = targetPair!!.isPairExistsByHashMap(input, target)
-        AssertionsForClassTypes.assertThat(output).isTrue
+        val output = targetPair.isPairExistsByHashMap(input, target)
+        assertThat(output).isTrue
     }
 
     @Test
@@ -26,8 +31,8 @@ internal class TargetPairTest {
     fun targetPair_pairDoNotExists_returnFalse() {
         val target = 10
         val input = listOf(3, 4, 5, 1)
-        val output = targetPair!!.isPairExistsByHashMap(input, target)
-        AssertionsForClassTypes.assertThat(output).isFalse
+        val output = targetPair.isPairExistsByHashMap(input, target)
+        assertThat(output).isFalse
     }
 
     @Test
@@ -35,8 +40,8 @@ internal class TargetPairTest {
     fun targetPair_pairDoNotExists_bruteForce_returnFalse() {
         val target = 12
         val input = listOf(3, 4, 5, 1)
-        val output = targetPair!!.isPairExistsByBruteForce(input, target)
-        AssertionsForClassTypes.assertThat(output).isFalse
+        val output = targetPair.isPairExistsByBruteForce(input, target)
+        assertThat(output).isFalse
     }
 
     @Test
@@ -44,7 +49,7 @@ internal class TargetPairTest {
     fun targetPair_pairDoNotExists_bruteForce_returnTrue() {
         val target = 4
         val input = listOf(3, 4, 5, 1)
-        val output = targetPair!!.isPairExistsByBruteForce(input, target)
-        AssertionsForClassTypes.assertThat(output).isTrue
+        val output = targetPair.isPairExistsByBruteForce(input, target)
+        assertThat(output).isTrue
     }
 }

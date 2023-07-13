@@ -1,7 +1,5 @@
 package com.coderconsole.dsa.easy.hashmap
 
-import java.util.*
-
 /**
  * Given an array of strings strs, group the anagrams together. You can return the answer in any order.
  *
