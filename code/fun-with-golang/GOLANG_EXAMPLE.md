@@ -38,8 +38,8 @@
 - [x] WaitGroups
 - [x] Rate Limiting
 - [x] Atomic Counters
-- [ ] Mutexes
-- [ ] Stateful Goroutines
+- [x] Mutexes
+- [x] Stateful Goroutines
 - [ ] Sorting
 - [ ] Sorting by Functions
 - [ ] Panic

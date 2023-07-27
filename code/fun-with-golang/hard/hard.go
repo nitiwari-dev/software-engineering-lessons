@@ -4,8 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"fun-with-golang/helper"
+	"math/rand"
 	"os"
 	"sync"
+	"sync/atomic"
 	"time"
 )
 
@@ -22,7 +24,83 @@ func Init() {
 	waitgroup()
 	rateLimiting()
 	mutex()
+	statefulGoroutines()
 	helper.Println("Ending Hard section...")
+}
+
+type ReadOps struct {
+	key    int
+	result chan int
+}
+
+type WriteOps struct {
+	key    int
+	value  int
+	result chan bool
+}
+
+func statefulGoroutines() {
+
+	//operation count
+	var readCount uint64
+	var writeCount uint64
+
+	reads := make(chan ReadOps)
+	writes := make(chan WriteOps)
+
+	//states
+	go func() {
+		states := make(map[int]int)
+		for {
+			select {
+			case r := <-reads:
+				r.result <- states[r.key]
+			case w := <-writes:
+				states[w.key] = w.value
+				w.result <- true
+			}
+		}
+	}()
+
+	//reads
+	for i := 0; i < 10; i++ {
+		go func() {
+			for {
+				r := ReadOps{
+					key:    rand.Intn(5),
+					result: make(chan int),
+				}
+
+				reads <- r
+				<-r.result
+				atomic.AddUint64(&readCount, 1)
+				time.Sleep(time.Millisecond)
+			}
+		}()
+	}
+
+	//writes
+	for i := 0; i < 10; i++ {
+		go func() {
+			for {
+				w := WriteOps{
+					key:    rand.Intn(5),
+					value:  rand.Intn(100),
+					result: make(chan bool),
+				}
+
+				writes <- w
+				<-w.result
+				atomic.AddUint64(&writeCount, 1)
+				time.Sleep(time.Millisecond)
+			}
+		}()
+	}
+
+	time.Sleep(time.Second)
+	fmt.Println("read count=", atomic.LoadUint64(&readCount))
+	fmt.Println("write count=", atomic.LoadUint64(&writeCount))
+
 }
 
 type Container struct {
