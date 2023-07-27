@@ -21,7 +21,41 @@ func Init() {
 	workers()
 	waitgroup()
 	rateLimiting()
+	mutex()
 	helper.Println("Ending Hard section...")
+}
+
+type Container struct {
+	mu      sync.Mutex
+	counter map[string]int
+}
+
+func (c *Container) incr(name string) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	c.counter[name]++
+}
+func mutex() {
+
+	c := Container{
+		counter: map[string]int{"a": 0, "b": 0},
+	}
+
+	var wq sync.WaitGroup
+
+	incrementFunction := func(name string, count int) {
+		for i := 0; i < count; i++ {
+			c.incr(name)
+		}
+		wq.Done()
+	}
+
+	wq.Add(3)
+	go incrementFunction("a", 1)
+	go incrementFunction("b", 1)
+	go incrementFunction("b", 1)
+	wq.Wait()
+	fmt.Println(c.counter)
 }
 
 func rateLimiting() {
