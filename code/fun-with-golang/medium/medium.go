@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"fun-with-golang/helper"
 	"math"
+	"sort"
 	"strconv"
 )
 
@@ -17,7 +18,50 @@ func Init() {
 	generics()
 	typAssertions()
 	typeStringerExample()
+	sorting()
 	helper.Println("Ending medium section...")
+}
+
+type byLength []string
+
+func (s byLength) Len() int {
+	return len(s)
+}
+
+func (s byLength) Less(i, j int) bool {
+	return len(s[i]) < len(s[j])
+}
+
+func (s byLength) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
+}
+func sorting() {
+	ints := []int{5, 2, 3}
+	sort.Ints(ints)
+	fmt.Println(ints)
+
+	//status of sorting
+	fmt.Println(sort.IntsAreSorted(ints))
+
+	//sort strings using slice - ascending
+	font := "123arial"
+	fontRune := []rune(font)
+	sort.Slice(fontRune, func(i, j int) bool {
+		return font[i] < font[j] // ascending sort
+	})
+	fmt.Println(string(fontRune))
+
+	//sort strings using slice - ascending
+	sort.Slice(fontRune, func(i, j int) bool {
+		return fontRune[i] > fontRune[j]
+	})
+	fmt.Println(string(fontRune))
+
+	//custom sorting using only length for string array
+	unsortedArray := []string{"bangkok", "mumbai", "pune"}
+	sort.Sort(byLength(unsortedArray))
+	fmt.Println(unsortedArray)
+
 }
 
 /*
