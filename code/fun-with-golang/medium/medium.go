@@ -19,7 +19,40 @@ func Init() {
 	typAssertions()
 	typeStringerExample()
 	sorting()
+	panicExample()
 	helper.Println("Ending medium section...")
+}
+
+type Response struct {
+	status int
+}
+
+func triggerApi(request Request) (Response, error) {
+
+	if len(request.name) == 0 {
+		return Response{}, errors.New("name cannot be blank")
+	}
+
+	return Response{status: 200}, nil
+
+}
+
+type Request struct {
+	name string
+}
+
+func panicExample() {
+	_, err := triggerApi(Request{name: ""})
+	if err != nil {
+		panic(err)
+	}
+
+	result, err := triggerApi(Request{name: "Mum"})
+	if err != nil {
+		panic(err)
+	} else {
+		fmt.Println(result)
+	}
 }
 
 type byLength []string
@@ -105,7 +138,7 @@ func typAssertions() {
 	helper.Println("Type Assertions")
 	var i interface{} = "Hello"
 	helper.Println(i.(string))
-	//helper.Println(i.(int64)) // trigger panic as it's not of correct type
+	//helper.Println(i.(int64)) // trigger panicExample as it's not of correct type
 	a, ok := i.(int64)
 	helper.Println(a, ok)
 
