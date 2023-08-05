@@ -19,8 +19,29 @@ func Init() {
 	typAssertions()
 	typeStringerExample()
 	sorting()
-	panicExample()
+	recoverExample()
 	helper.Println("Ending medium section...")
+}
+
+/*
+*
+1. Recovers from the panic
+2. Must be called within the defer function
+*/
+func recoverExample() {
+	defer recoverResponse()
+	panicExample()
+}
+
+func recoverResponse() {
+	r := recover()
+	if r != nil {
+		fmt.Println("error ", r)
+	}
+}
+
+func triggerPanicToRecover() {
+	panic("triggr panic to be recovered")
 }
 
 type Response struct {
