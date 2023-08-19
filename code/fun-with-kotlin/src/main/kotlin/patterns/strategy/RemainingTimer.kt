@@ -38,5 +38,6 @@ open class RemainingTimer(private val strategy: RemainingTimeStrategy) {
         }
 
     }
+<<<<<<< HEAD
 }
 
