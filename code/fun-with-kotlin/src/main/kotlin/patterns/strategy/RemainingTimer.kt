@@ -20,7 +20,7 @@ open class RemainingTimer(private val strategy: RemainingTimeStrategy) {
         }
 
         private fun convertMillsToMinutes(timeInMillis: Long, toHours: Long) =
-            TimeUnit.MILLISECONDS.toMinutes(timeInMillis - toHours * 60 * 60 * 1000)
+            TimeUnit.MILLISECONDS.toMinutes(timeInMillis - TimeUnit.HOURS.toMillis(toHours))
 
     }
 
@@ -32,10 +32,11 @@ open class RemainingTimer(private val strategy: RemainingTimeStrategy) {
                 val toSeconds = TimeUnit.MILLISECONDS.toSeconds(timeInMillis)
                 "$toSeconds sec"
             }else {
-                val toSeconds = TimeUnit.MILLISECONDS.toSeconds(timeInMillis - toMinutes * 60 * 1000)
+                val toSeconds = TimeUnit.MILLISECONDS.toSeconds(timeInMillis - TimeUnit.MINUTES.toMillis(toMinutes))
                 if (toSeconds > 0) "$toMinutes min $toSeconds sec" else "$toMinutes min"
             }
         }
 
     }
 }
+
