@@ -7,6 +7,9 @@
     <groupId>com.coderconsole</groupId>
     <artifactId>tdd</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <junit-jupiter-params.version>5.9.3</junit-jupiter-params.version>
+    </properties>
     <dependencies>
 
         <dependency>
@@ -19,7 +22,14 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.3</version>
+            <version>${junit-jupiter-params.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter-params.version}</version>
             <scope>test</scope>
         </dependency>
 
