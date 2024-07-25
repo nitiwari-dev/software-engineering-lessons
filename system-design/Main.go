@@ -1,8 +1,8 @@
 package main
 
 import (
-	"system-design/hash_func"
-	"system-design/redirect_router"
+	"system_design/hash_func"
+	"system_design/redirect_router"
 )
 
 func main() {
