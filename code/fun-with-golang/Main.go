@@ -1,13 +1,7 @@
 package main
 
-import (
-	"fun-with-golang/basic"
-	"fun-with-golang/hard"
-	"fun-with-golang/medium"
-)
+import "fun-with-golang/intro"
 
 func main() {
-	basic.Init()
-	medium.Init()
-	hard.Init()
+	intro.Intro()
 }
