@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fun-with-golang/basic"
-	"fun-with-golang/hard"
-	"fun-with-golang/medium"
+	"fun-with-golang/intro/basic"
+	"fun-with-golang/intro/hard"
+	"fun-with-golang/intro/medium"
 )
 
 func main() {
