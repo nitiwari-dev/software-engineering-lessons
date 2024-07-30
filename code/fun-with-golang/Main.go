@@ -1,7 +1,9 @@
 package main
 
-import "fun-with-golang/intro"
+import (
+	"fun-with-golang/app"
+)
 
 func main() {
-	intro.Intro()
+	app.StartApp()
 }

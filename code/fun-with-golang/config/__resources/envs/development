@@ -1,0 +1,8 @@
+
+				"app_name": fun-with-golang
+				"http_server_config":
+  					"port": 9009
+				"service_config":
+					"intro_config":
+      					"is_enabled": true
+				
