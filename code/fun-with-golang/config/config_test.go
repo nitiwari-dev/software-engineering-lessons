@@ -7,13 +7,13 @@ import (
 	"testing"
 )
 
-func Test_GivenEnvironmentNotSetReturnDevelopmentEnv(t *testing.T) {
+func Test_GivenEnvironmentIsNotSetReturnDevelopmentEnv(t *testing.T) {
 	expectedEnv := "development"
 	actualEnv := getAppEnv()
 	assert.Equal(t, expectedEnv, actualEnv)
 }
 
-func Test_GivenEnvironmentSetReturnTheEnv(t *testing.T) {
+func Test_GivenEnvironmentIsSetReturnTheEnv(t *testing.T) {
 	//Set the expectedEnv
 	expectedEnv := "prod"
 	_ = os.Setenv("APP_ENV", expectedEnv)
@@ -21,7 +21,7 @@ func Test_GivenEnvironmentSetReturnTheEnv(t *testing.T) {
 	assert.Equal(t, expectedEnv, actualEnv)
 }
 
-func Test_GivenAppConfigExitsByEnvReturnTrue(t *testing.T) {
+func Test_GivenAppConfigFileExitsReturnTrue(t *testing.T) {
 	validConfigName := "development"
 	dirPath := "./__resources/envs"
 
@@ -35,7 +35,7 @@ func Test_GivenAppConfigExitsByEnvReturnTrue(t *testing.T) {
 	viper.Reset()
 }
 
-func Test_GivenAppConfigNotExitsByEnvReturnFalse(t *testing.T) {
+func Test_GivenAppConfigFileDoNotExitsReturnFalse(t *testing.T) {
 	configName := "invalid-file-name"
 	dirPath := "./__resources/envs"
 
