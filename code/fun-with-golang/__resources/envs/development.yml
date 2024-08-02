@@ -1,6 +1,6 @@
-"app_name": fun-with-golang
+"app_name": fun-with-golang-top-level
 "http_server_config":
   "port": 9009
 "service_config":
   "intro_config":
-      "is_enabled": true
+      "is_enabled": false
