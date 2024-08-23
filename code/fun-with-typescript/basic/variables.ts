@@ -48,4 +48,28 @@ resultObject = networkRequest()
 console.log(resultObject);
 
 
+// array
+let gamesId: Array<number> = [1, 2, 3, 5]
+gamesId.sort
+console.log(gamesId)
+
+//union type either or in the type
+
+function showCaseGameId(id: number | string){
+    console.log(id);
+}
+
+function showCaseGameNumber(id: number[] | number){
+    if (Array.isArray(id)){
+        id.sort()
+        console.log(id);
+    } else {
+        console.log(id)
+    }
+}
+
+showCaseGameNumber([9, 0 ,0, 1])
+showCaseGameNumber(1)
+
+
 export {}

@@ -28,13 +28,33 @@ var isUserFromEarth = false;
 any - if you want to not have type-checked
         use noImplicitAny within the tsconfig.json
 */
-//BAD practice
+//BAD practice. As a developer its difficult to intefer the response
 var result;
 function networkRequest() {
-    return { "success": true };
+    return "success";
 }
 result = networkRequest();
 console.log(result);
+//Good Practice
 var resultObject;
 resultObject = networkRequest();
 console.log(resultObject);
+// array
+var gamesId = [1, 2, 3, 5];
+gamesId.sort;
+console.log(gamesId);
+//union type either or in the type
+function showCaseGameId(id) {
+    console.log(id);
+}
+function showCaseGameNumber(id) {
+    if (Array.isArray(id)) {
+        id.sort();
+        console.log(id);
+    }
+    else {
+        console.log(id);
+    }
+}
+showCaseGameNumber([9, 0, 0, 1]);
+showCaseGameNumber(1);
