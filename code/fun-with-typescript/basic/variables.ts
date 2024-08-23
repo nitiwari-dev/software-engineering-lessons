@@ -53,7 +53,7 @@ let gamesId: Array<number> = [1, 2, 3, 5]
 gamesId.sort
 console.log(gamesId)
 
-//union type either or in the type
+//union type either or in the type as input
 
 function showCaseGameId(id: number | string){
     console.log(id);
@@ -68,8 +68,104 @@ function showCaseGameNumber(id: number[] | number){
     }
 }
 
+// union type either or in the type as out
+function compare(a: number, b: number): -1 | 0 | 1 {
+    return a == b ? 0 : a > b ? 1: -1
+}
+let a = 10
+let b = 20
+console.log("comparing ", compare(10, 20));
+
+
 showCaseGameNumber([9, 0 ,0, 1])
 showCaseGameNumber(1)
 
+// type alias
+
+type Growth = {
+    rate: number,
+    value: number
+}
+
+
+function findRateOfGrowth(growth: Growth): number {
+    return growth.rate/100 * growth.value
+}
+
+let growth: Growth = {rate: 10, value:10}
+console.log(findRateOfGrowth(growth))
+
+
+// type alias - using interfaces
+
+interface GrowthRate {
+    ratePercentage: number
+    value: number
+}
+
+function findGrowthRate2(growth: GrowthRate): number {
+    return growth.ratePercentage *  growth.value
+}
+
+console.log(findGrowthRate2({ratePercentage: 10, value: 5}));
+
+
+// type cast with example
+interface Auth {
+    token: string
+}
+
+interface HMAC extends Auth {
+    alog: string
+}
+
+function verifyAuth(token: string): Auth {
+    let auth: HMAC = {alog: "SHA256", token: token}
+    return auth
+}
+
+let auth = <HMAC>verifyAuth("1234")
+console.log(auth.alog);
+console.log(auth.token);
+
+
+// null and undefined using strictNullChecks into tsconfig.json
+// using ! as not null assertion (for kotlin programmers its !!)
+
+function validateToken(token: string | null): boolean {
+    if (token != null){
+        console.log(token);
+        return true
+    }
+
+    return false
+}
+
+
+// Truthiness narrowing safe guarding and coerce 
+// Typeguard find the type of variable e.g typeof id === "number" will return true if id is a number type
+// This process of typeguarding and checking with more specific checks are called narrowing in ts
+// we can have typeof for "string" "number" "object" "boolean" "undefined" "function"
+// Operator ? and ! are same as kotlin behaviour
+// handle null cases with
+
+//using trutiness narrowing
+// function findAllCustomers(ids: string[] | string | null){
+    //if (idstypeof ids == "object"){
+
+
+function findAllCustomers(ids: string[] | string | null){
+    if (typeof ids == "object"){
+        ids?.forEach(element => {
+            console.log(element)
+        });
+    }
+}
+
+findAllCustomers([])
+
 
 export {}
+
+
+

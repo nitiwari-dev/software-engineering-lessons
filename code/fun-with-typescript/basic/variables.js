@@ -43,7 +43,7 @@ console.log(resultObject);
 var gamesId = [1, 2, 3, 5];
 gamesId.sort;
 console.log(gamesId);
-//union type either or in the type
+//union type either or in the type as input
 function showCaseGameId(id) {
     console.log(id);
 }
@@ -56,5 +56,50 @@ function showCaseGameNumber(id) {
         console.log(id);
     }
 }
+// union type either or in the type as out
+function compare(a, b) {
+    return a == b ? 0 : a > b ? 1 : -1;
+}
+var a = 10;
+var b = 20;
+console.log("comparing ", compare(10, 20));
 showCaseGameNumber([9, 0, 0, 1]);
 showCaseGameNumber(1);
+function findRateOfGrowth(growth) {
+    return growth.rate / 100 * growth.value;
+}
+var growth = { rate: 10, value: 10 };
+console.log(findRateOfGrowth(growth));
+function findGrowthRate2(growth) {
+    return growth.ratePercentage * growth.value;
+}
+console.log(findGrowthRate2({ ratePercentage: 10, value: 5 }));
+function verifyAuth(token) {
+    var auth = { alog: "SHA256", token: token };
+    return auth;
+}
+var auth = verifyAuth("1234");
+console.log(auth.alog);
+console.log(auth.token);
+// null and undefined using strictNullChecks into tsconfig.json
+// using ! as not null assertion (for kotlin programmers its !!)
+function validateToken(token) {
+    if (token != null) {
+        console.log(token);
+        return true;
+    }
+    return false;
+}
+// Truthiness narrowing safe guarding and coerce 
+// Typeguard find the type of variable e.g typeof id === "number" will return true if id is a number type
+// This process of typeguarding and checking with more specific checks are called narrowing in ts
+// we can have typeof for "string" "number" "object" "boolean" "undefined" "function"
+// handle null cases with
+function findAllCustomers(ids) {
+    if (ids && typeof ids == "object") {
+        ids.forEach(function (element) {
+            console.log(element);
+        });
+    }
+}
+findAllCustomers([]);
