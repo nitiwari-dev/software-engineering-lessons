@@ -94,12 +94,50 @@ function validateToken(token) {
 // Typeguard find the type of variable e.g typeof id === "number" will return true if id is a number type
 // This process of typeguarding and checking with more specific checks are called narrowing in ts
 // we can have typeof for "string" "number" "object" "boolean" "undefined" "function"
+// Operator ? and ! are same as kotlin behaviour
 // handle null cases with
+//using trutiness narrowing
+// function findAllCustomers(ids: string[] | string | null){
+//if (idstypeof ids == "object"){
 function findAllCustomers(ids) {
-    if (ids && typeof ids == "object") {
-        ids.forEach(function (element) {
+    if (typeof ids == "object") {
+        ids === null || ids === void 0 ? void 0 : ids.forEach(function (element) {
             console.log(element);
         });
     }
 }
+// == null check both for null and undefined
+// 
 findAllCustomers([]);
+function checkShape(shape) {
+    console.log(shape === null || shape === void 0 ? void 0 : shape.radius);
+    console.log(shape === null || shape === void 0 ? void 0 : shape.type);
+}
+checkShape({ radius: 1, type: "circle" });
+function checkNotNull(value) {
+    if (value)
+        console.log(value.userName);
+    else
+        console.log("user cannot be null");
+}
+checkNotNull(null);
+// Enums
+var LogLevel;
+(function (LogLevel) {
+    LogLevel[LogLevel["INFO"] = 0] = "INFO";
+    LogLevel[LogLevel["WARN"] = 1] = "WARN";
+    LogLevel[LogLevel["ERROR"] = 2] = "ERROR";
+    LogLevel[LogLevel["FAILURE"] = 3] = "FAILURE";
+})(LogLevel || (LogLevel = {}));
+function logMessage(level, logMessage) {
+    var levelInfo = LogLevel[level];
+    switch (levelInfo) {
+        case LogLevel.ERROR:
+            console.log(level, logMessage);
+            break;
+        default:
+            console.log(level, logMessage);
+            break;
+    }
+}
+logMessage("ERROR", "fail to pase json");

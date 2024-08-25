@@ -81,7 +81,6 @@ showCaseGameNumber([9, 0 ,0, 1])
 showCaseGameNumber(1)
 
 // type alias
-
 type Growth = {
     rate: number,
     value: number
@@ -162,8 +161,64 @@ function findAllCustomers(ids: string[] | string | null){
     }
 }
 
+// == null check both for null and undefined
+// 
+
 findAllCustomers([])
 
+// null checks
+
+interface Shape {
+    radius?: number
+    type?: string
+}
+
+function checkShape(shape: Shape){
+    console.log(shape?.radius!)
+    console.log(shape?.type!)
+}
+
+checkShape({radius: 1, type: "circle"})
+
+
+// Null assertion
+
+interface User {
+    userName: string | null
+}
+function checkNotNull(value?: User | null){
+    if (value) console.log(value.userName)
+    else console.log("user cannot be null");    
+}
+
+checkNotNull(null)
+
+// Enums
+
+enum LogLevel {
+    INFO,
+    WARN,
+    ERROR,
+    FAILURE
+}
+
+
+// same as type level = "INFO" | "WARN" 
+type LogLevelString = keyof typeof LogLevel
+
+function logMessage(level: LogLevelString, logMessage: string){
+    let levelInfo = LogLevel[level]
+    switch(levelInfo){
+        case LogLevel.ERROR:
+            console.log(level, logMessage)
+            break
+        default:
+            console.log(level, logMessage)
+            break
+    }
+}
+
+logMessage("ERROR", "fail to pase json")
 
 export {}
 
