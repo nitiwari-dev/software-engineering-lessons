@@ -57,6 +57,23 @@ var processReq = function (code) {
     console.log(code);
 };
 processInput(processReq);
-
-
-export {}
+// generics with type inteference, similar to reified type in kotlin solving the problem of type erasure during runtime
+function myList(t) {
+    return [t];
+}
+console.log(myList(10));
+//extension function on the property of the type
+function maxOf(a, b) {
+    if (a.length >= b.length)
+        return a;
+    else
+        return b;
+}
+console.log(maxOf([1, 3], [2, 3, 4]));
+//extension function to mark the character a cap. This is just a example not recommeneded as we can simply write a fucntion
+function capFirstCharacter(s) {
+    if (s.length == 0)
+        return s;
+    return s[0].toUpperCase() + s.substring(1).toLowerCase();
+}
+console.log(capFirstCharacter("hello"));
