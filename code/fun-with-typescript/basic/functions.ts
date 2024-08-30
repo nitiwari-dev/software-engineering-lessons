@@ -64,5 +64,17 @@ const request = networkRequest(userId, (): string => {
 
 console.log(request);
 
+// type as function param
+
+type InputRequest = (code: number) => void
+
+function processInput(input: InputRequest){
+    input.apply(null, [100])
+}
+const processReq: InputRequest = (code: number) => {
+    console.log(code)
+}
+processInput(processReq)
+
 
 export { };

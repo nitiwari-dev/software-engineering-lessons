@@ -49,19 +49,14 @@ var userId = "1001";
 var request = networkRequest(userId, function () {
     return "onboarding completed for ".concat(userId);
 });
-
-function tryDifferentType(type: "string" | "number" | "boolean"): string {
-    switch (type) {
-        case "string":
-            return "string";
-        case "number":
-            return "number";
-        case "boolean":
-            return "boolean";
-        default:
-            return "unknown";
+console.log(request);
+function processInput(input) {
+    input.apply(null, [100]);
 }
+var processReq = function (code) {
+    console.log(code);
+};
+processInput(processReq);
 
-console.log(request)
 
-export {  }
+export {}
