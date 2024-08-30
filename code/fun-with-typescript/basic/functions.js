@@ -50,5 +50,18 @@ var request = networkRequest(userId, function () {
     return "onboarding completed for ".concat(userId);
 });
 
+function tryDifferentType(type: "string" | "number" | "boolean"): string {
+    switch (type) {
+        case "string":
+            return "string";
+        case "number":
+            return "number";
+        case "boolean":
+            return "boolean";
+        default:
+            return "unknown";
+}
 
-console.log(request);
+console.log(request)
+
+export {  }

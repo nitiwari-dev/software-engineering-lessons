@@ -1,5 +1,3 @@
-
-
 //generic functionwith type 
 function prepareOnboardingRequest(name: string, email: string, guestUser: boolean): object {
     let request = { "name": name, "email": email, "isGuest": guestUser }
@@ -17,11 +15,7 @@ let viewPagerEventDefault = (pageId: number, pageName: string) => {
 }
 console.log(viewPagerEventDefault(1001, "Onboarding"))
 
-
-
-
 //using map and reduce as functions
-
 
 const sessionsEpisodes = [
     {
@@ -69,11 +63,6 @@ const request = networkRequest(userId, (): string => {
 })
 
 console.log(request);
-
-
-
-
-
 
 
 export { };
