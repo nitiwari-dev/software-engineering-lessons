@@ -1,5 +1,3 @@
-
-
 //generic functionwith type 
 function prepareOnboardingRequest(name: string, email: string, guestUser: boolean): object {
     let request = { "name": name, "email": email, "isGuest": guestUser }
@@ -17,11 +15,7 @@ let viewPagerEventDefault = (pageId: number, pageName: string) => {
 }
 console.log(viewPagerEventDefault(1001, "Onboarding"))
 
-
-
-
 //using map and reduce as functions
-
 
 const sessionsEpisodes = [
     {
@@ -70,10 +64,43 @@ const request = networkRequest(userId, (): string => {
 
 console.log(request);
 
+// type as function param
+
+type InputRequest = (code: number) => void
+
+function processInput(input: InputRequest){
+    input.apply(null, [100])
+}
+const processReq: InputRequest = (code: number) => {
+    console.log(code)
+}
+processInput(processReq)
 
 
+// generics with type inteference, similar to reified type in kotlin solving the problem of type erasure during runtime
+function myList<T>(t: T): T[]{
+    return [t]
+}
+
+console.log(myList(10));
 
 
+//extension function on the property of the type
+function maxOf<Type extends {length: number}>(a: Type, b: Type): Type {
+    if (a.length >= b.length) return a 
+    else return b
+}
+
+console.log(maxOf([1, 3], [2,3,4]))
+
+//extension function to mark the character a cap. This is just a example not recommeneded as we can simply write a fucntion
+
+function capFirstCharacter<s extends string>(s: string): string {
+    if (s.length == 0) return s
+    return s[0].toUpperCase() + s.substring(1).toLowerCase()
+}
+
+console.log(capFirstCharacter("hello"));
 
 
 export { };
