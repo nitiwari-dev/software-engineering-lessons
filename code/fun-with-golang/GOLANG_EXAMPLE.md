@@ -40,41 +40,41 @@
 - [x] Atomic Counters
 - [x] Mutexes
 - [x] Stateful Goroutines
-- [ ] Sorting
-- [ ] Sorting by Functions
-- [ ] Panic
-- [ ] Defer
-- [ ] Recover
-- [ ] String Functions
-- [ ] String Formatting
-- [ ] Text Templates
-- [ ] Regular Expressions
-- [ ] JSON
-- [ ] XML
-- [ ] Time
-- [ ] Epoch
-- [ ] Time Formatting / Parsing
-- [ ] Random Numbers
-- [ ] Number Parsing
-- [ ] URL Parsing
-- [ ] SHA256 Hashes
-- [ ] Base64 Encoding
-- [ ] Reading Files
-- [ ] Writing Files
-- [ ] Line Filters
-- [ ] File Paths
-- [ ] Directories
-- [ ] Temporary Files and Directories
-- [ ] Embed Directive
-- [ ] Testing and Benchmarking
-- [ ] Command-Line Arguments
-- [ ] Command-Line Flags
-- [ ] Command-Line Subcommands
-- [ ] Environment Variables
-- [ ] HTTP Client
-- [ ] HTTP Server
-- [ ] Context
-- [ ] Spawning Processes
-- [ ] Exec'ing Processes
-- [ ] Signals
-- [ ] Exit
+- [x] Sorting
+- [x] Sorting by Functions
+- [x] Panic
+- [x] Defer
+- [x] Recover
+- [x] String Functions
+- [x] String Formatting
+- [x] Text Templates
+- [x] Regular Expressions
+- [x] JSON
+- [x] XML
+- [x] Time
+- [x] Epoch
+- [x] Time Formatting / Parsing
+- [x] Random Numbers
+- [x] Number Parsing
+- [x] URL Parsing
+- [x] SHA256 Hashes
+- [x] Base64 Encoding
+- [x] Reading Files
+- [x] Writing Files
+- [x] Line Filters
+- [x] File Paths
+- [x] Directories
+- [x] Temporary Files and Directories
+- [x] Embed Directive
+- [x] Testing and Benchmarking
+- [x] Command-Line Arguments
+- [x] Command-Line Flags
+- [x] Command-Line Subcommands
+- [x] Environment Variables
+- [x] HTTP Client
+- [x] HTTP Server
+- [x] Context
+- [x] Spawning Processes
+- [x] Exec'ing Processes
+- [x] Signals
+- [x] Exit
