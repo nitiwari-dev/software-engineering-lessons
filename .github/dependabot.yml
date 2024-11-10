@@ -9,11 +9,11 @@ updates:
     directory: "agile/tdd" # Location of package manifests
     schedule:
       interval: "monthly"
-  - package-ecosystem: "maven"
-    directory: "code/fun-with-kotlin"
+  - package-ecosystem: "maven" 
+    directory: "code/fun-with-kotlin" 
     schedule:
       interval: "monthly"
-  - package-ecosystem: "maven"
+  - package-ecosystem: "maven" 
     directory: "dsa-kotlin"
     schedule:
       interval: "monthly"
