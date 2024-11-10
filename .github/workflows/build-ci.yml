@@ -18,10 +18,10 @@ jobs:
     - name: Checkout Project
       uses: actions/checkout@v3
       
-    - name: Setup JDK 11
+    - name: Setup JDK 22
       uses: actions/setup-java@v3
       with:
-        java-version: '11'
+        java-version: '22'
         distribution: 'temurin'
         cache: maven
   
@@ -29,12 +29,16 @@ jobs:
       name: File Changes
       uses: trilom/file-changes-action@v1.2.3
          
-    - if: contains(steps.file_changes.outputs.files , 'tdd/')
+    - if: contains(steps.file_changes.outputs.files , 'agile/tdd/')
       name: Build Maven Project
       run: |
         mvn test --file agile/tdd/pom.xml
-    - if: contains(steps.file_changes.outputs.files , 'dsa/')
+    - if: contains(steps.file_changes.outputs.files , 'dsa-kotlin/')
       name: Build Maven Project
       run: |
-        mvn test --file dsa/pom.xml    
+        mvn test --file dsa-kotlin/pom.xml    
+    - if: contains(steps.file_changes.outputs.files , 'code/fun-with-kotlin/')
+      name: Build Maven Project
+      run: |
+        mvn test --file code/fun-with-kotlin/pom.xml    
         

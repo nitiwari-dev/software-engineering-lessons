@@ -6,6 +6,14 @@
 version: 2
 updates:
   - package-ecosystem: "maven" # See documentation for possible values
-    directory: "tdd/" # Location of package manifests
+    directory: "agile/tdd" # Location of package manifests
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "maven" # See documentation for possible values
+    directory: "code/fun-with-kotlin" # Location of package manifests
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "maven" # See documentation for possible values
+    directory: "dsa-kotlin" # Location of package manifests
     schedule:
       interval: "daily"
