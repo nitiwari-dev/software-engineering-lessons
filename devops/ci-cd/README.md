@@ -11,5 +11,6 @@ tar xzf ./actions-runner-osx-arm64-2.320.0.tar.gz
 
 - Follow the steps from github - Settings -> Actions -> Runner
   - This configure your system to act as runner and will ask options like runner name, group etc
-    - ![Self hosted runner](..%2F..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2F4z%2Fpqdpw4zn705fz3k8z8_gq2nw0000gq%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_IRlKF9%2FScreenshot%202024-11-11%20at%201.35.25%E2%80%AFAM.png)
-
+    <img width="792" alt="Screenshot 2024-11-11 at 1 37 55 AM" src="https://github.com/user-attachments/assets/060b780a-8eb6-4d73-b3f7-be8e142ebdb3">
+  - Runner running on the local after the PR push
+    <img width="441" alt="Screenshot 2024-11-11 at 1 38 31 AM" src="https://github.com/user-attachments/assets/85cedf35-8c0d-4e06-a528-430819be183c">
