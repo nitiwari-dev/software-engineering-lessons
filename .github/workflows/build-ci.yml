@@ -10,7 +10,7 @@ on:
 
 jobs:
 
-  Test:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -24,21 +24,21 @@ jobs:
         java-version: '22'
         distribution: 'temurin'
         cache: maven
-  
+
     - id: file_changes
       name: File Changes
       uses: trilom/file-changes-action@v1.2.3
-         
+
     - if: contains(steps.file_changes.outputs.files , 'agile/tdd/')
-      name: Build Maven Project
+      name: Build Maven Project for agile/tdd/
       run: |
         mvn test --file agile/tdd/pom.xml
     - if: contains(steps.file_changes.outputs.files , 'dsa-kotlin/')
-      name: Build Maven Project
+      name: Build Maven Project for dsa-kotlin/
       run: |
         mvn test --file dsa-kotlin/pom.xml    
     - if: contains(steps.file_changes.outputs.files , 'code/fun-with-kotlin/')
-      name: Build Maven Project
+      name: Build Maven Project for code/fun-with-kotlin
       run: |
         mvn test --file code/fun-with-kotlin/pom.xml    
         
