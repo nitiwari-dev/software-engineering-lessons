@@ -36,3 +36,8 @@ cat /etc/os-release
 ```bash
 cat -l /etc/localtime
 ```
+
+### DNS lookup for mail exchange
+```bash
+dig +short MX gmail.com
+```
