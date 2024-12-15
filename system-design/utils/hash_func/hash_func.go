@@ -7,6 +7,9 @@ import (
 
 // HashFunction Hash function are functions which takes arbitratry size input and convert them into fixed sized output called as hashcode, and the domain is called hash space
 func HashFunction(data string) string {
+	if len(data) == 0 {
+		return data
+	}
 	sum := hashInBytes(data)
 	encode := hex.EncodeToString(sum)
 	return encode
