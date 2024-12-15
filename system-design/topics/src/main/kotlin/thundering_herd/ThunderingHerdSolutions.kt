@@ -39,7 +39,14 @@ import java.util.concurrent.ConcurrentHashMap
  * result key=IN, result=India
  * result key=IN, result=India
  * result key=IN, result=India
-
+ *
+ *
+ *
+ * Issue and solutions
+ *
+ * If ```fetchFromDb``` takes too long, the mutex will block all waiting threads or coroutines for that key.
+ * Optimizations like double-checked locking, asynchronous fetching, per-key locks, and timeouts can mitigate delays and improve responsiveness.
+ * The choice of approach depends on the trade-offs you're willing to make between complexity, performance, and consistency.
  */
 
 private val cacheData = ConcurrentHashMap<String, String>()
@@ -82,6 +89,42 @@ suspend fun fetchValueUsingKeyUsingMutex(keyToBeSearched: String): String {
     }
 }
 
+//Double-check the cache before acquiring the lock to avoid unnecessary waiting.
+suspend fun fetchValueUsingKeyUsingDoubleLocking(keyToBeSearched: String): String {
+    cacheData[keyToBeSearched]?.let { return it } // early exit
+    mutex.lock() // lock
+    try {
+        return cacheData[keyToBeSearched] ?: fetchFromDb(keyToBeSearched).also { cacheData[keyToBeSearched] = it }
+    } finally {
+        mutex.unlock() //unlock
+    }
+}
+
+//Use coroutines to allow other threads or coroutines to proceed with unrelated keys while waiting for the database fetch.
+suspend fun fetchValueUsingKeyAsync(keyToBeSearched: String): String {
+        return cacheData[keyToBeSearched] ?: run {
+            mutex.withLock {
+                return cacheData[keyToBeSearched] ?:  fetchFromDb(keyToBeSearched).also { cacheData[keyToBeSearched] = it }
+            }
+        }
+}
+
+val locks = ConcurrentHashMap<String, Mutex>()
+//per key locking
+suspend fun fetchValueUsingPerKeyLocking(keyToBeSearched: String): String {
+    val locks = locks.computeIfAbsent(keyToBeSearched){
+        Mutex() // lock per key
+    }
+    return locks.withLock {
+        cacheData[keyToBeSearched]?: fetchFromDb(keyToBeSearched).also { cacheData[keyToBeSearched] = it }
+    }
+}
+
+
+
+
+
+
 fun clearCache() {
     cacheData.clear()
 }
@@ -119,4 +162,10 @@ private fun fetchFromDb(key: String): String {
     sleep(100) // Simulate Db operations delay
     println("fetching from DB for key=$key")
     return result
+}
+
+private suspend fun fetchFromDbWithTimeout(key: String): String {
+    return withTimeout(1000){
+        fetchFromDb(key)
+    }
 }
