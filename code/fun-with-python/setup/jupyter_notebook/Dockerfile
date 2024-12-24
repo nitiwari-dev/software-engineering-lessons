@@ -1,15 +1,22 @@
-#Arguments
-ARG NON_ROOT_USER_CODE=1001
 #latest image tag
 FROM bitnami/jupyter-base-notebook:latest
-#change the user to root for admin access to install packages
-USER root
-#install dependencies
-RUN conda install --quiet --yes \
-    'matplotlib-base' \
-    'scipy' && \
-    conda clean --all -f -y
 
-## switch back to non-root user
-USER $NON_ROOT_USER_CODE
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=9001", "--no-browser", "--allow-root"]
+#working dir
+WORKDIR /home/jovyan/work
+
+#permission
+RUN mkdir -p /home/jovyan/work && \
+    chown -R 1000:1000 /home/jovyan/work \
+
+#setting up env variables
+COPY --chmod=775 setup_env.sh /usr/local/bin/setup_env.sh
+ENTRYPOINT ["/usr/local/bin/setup_env.sh"]
+
+CMD jupyter notebook \
+    --ip=0.0.0.0 \
+    --NotebookApp.port=$JUPYTER_PORT \
+   # --NotebookApp.token='' \
+   # --NotebookApp.password='' \
+    --no-browser \
+    --allow-root \
+
