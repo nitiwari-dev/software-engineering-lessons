@@ -2,6 +2,7 @@ from abc import abstractmethod
 
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 class Sample:
@@ -11,6 +12,10 @@ class Sample:
 
 # Numerical Computation
 class NumPy(Sample):
+
+    def __init__(self):
+        print("Numpy is majorly used for numerical computation")
+
     def execute(self):
         num_py_array = np.array([3, 1, 2, 9, 8])
 
@@ -66,6 +71,10 @@ class NumPy(Sample):
 
 # Data manipulations
 class Pandas(Sample):
+
+    def __init__(self):
+        print("Pandas are majorly used for data manipulations")
+
     @abstractmethod
     def execute(self):
         # create a data frame
@@ -148,8 +157,93 @@ class Pandas(Sample):
         print(df_date_range)
 
 
+# Data Visualization
+class MatplotLib:
+
+    def __init__(self):
+        print("Matplotlib is majorly used for Data Visualization")
+
+    @abstractmethod
+    def execute(self):
+        print("Basic line plot")
+        x_axis = [x for x in range(1, 5)]
+        y_axis = [y for y in range(2, 10, 2)]
+        plt.plot(x_axis, y_axis, color="blue", marker="x", linestyle="--")
+        plt.title("basic line plot")
+        plt.xlabel("x axis")
+        plt.ylabel("y axis")
+        plt.grid()
+        plt.show()
+
+        print("Bar plot")
+        x_bar = [x for x in range(1, 5, 1)]
+        y_bar = [x for x in range(10, 50, 10)]
+        plt.bar(x_bar, y_bar)
+        plt.grid()
+        plt.show()
+
+        print("Horizontal Bar Plot")
+        x_bar_h = [10, 30, 20]  # 10, 20, 30, 40, 50 with step of 10
+        y_bar_h = [1, 2, 3]
+        plt.barh(x_bar_h, y_bar_h)
+        plt.show()
+
+        print("Scattered plot")
+        x_sc = [1, 2, 3, 4, 5]
+        y_sc = [2, 3, 4, 7, 11]
+
+        plt.scatter(x_sc, y_sc, color="purple", alpha=0.8, s=100)  # s is size of dot
+        plt.grid()
+        plt.show()
+
+        print("Histogram")
+        x_hist = np.random.randn(1000)
+        bins = 20  # no. of intervals
+        plt.hist(x=x_hist, bins=bins)  # out of 1000 random distribution with 20 internals
+        plt.show()
+
+        print("Pie Char")
+        x_pie = [40, 20, 50, 30]
+        x_labels = ["IN", "US", "UK", "JP"]
+        x_explode = [0.1, 0, 0, 0]  # highlight first slice
+        x_shadow = True
+        x_start_angle = 90
+        plt.pie(x_pie, labels=x_labels, explode=x_explode, shadow=x_shadow, startangle=x_start_angle)
+        plt.show()
+
+        print("Multiple Subplots")
+        x = [1, 2, 3, 4, 5]
+        y1 = [1, 4, 9, 16, 25]
+        y2 = [1, 8, 27, 64, 125]
+
+        plt.figure(figsize=(10, 5))  # 2:1 figure
+
+        plt.subplot(1, 2, 1)  # 1 row, 2 columns, 1st subplot
+        plt.plot(x, y1, color='blue')
+        plt.title("Square Numbers")
+
+        plt.subplot(1, 2, 2)  # 1 row, 2 columns, 2nd subplot
+        plt.plot(x, y2, color='red')
+        plt.title("Cubic Numbers")
+        plt.show()
+
+        print("Custom plot style")
+        plt.style.use("ggplot")
+
+        x = [1, 2, 3, 4, 5]
+        y = [10, 20, 15, 25, 30]
+
+        plt.plot(x, y, color='blue', marker='o')
+        plt.title("Custom plot style")
+        plt.xlabel("x axis")
+        plt.ylabel("y axis")
+        plt.grid()
+        plt.show()
+
+
 class Libraries(Sample):
     @abstractmethod
     def execute(self):
         # NumPy().execute()
-        Pandas().execute()
+        # Pandas().execute()
+        MatplotLib().execute()
