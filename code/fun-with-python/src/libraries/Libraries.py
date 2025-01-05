@@ -1,8 +1,11 @@
+import os
+import random
 from abc import abstractmethod
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 class Sample:
@@ -241,9 +244,54 @@ class MatplotLib:
         plt.show()
 
 
+# Statistical Data Visualisation
+class Seaborn:
+    def __init__(self):
+        print("Seaborn are majorly used for statistical data visualisation")
+
+    @abstractmethod
+    def execute(self):
+        data = {
+            "total_bill": [16.99, 10.34, 21.01, 23.68, 24.59],
+            "tip": [1.01, 1.66, 3.5, 3.31, 3.61],
+            "sex": ["Female", "Male", "Male", "Male", "Female"]
+        }
+
+        df_seaborn = pd.DataFrame(data)
+        print(df_seaborn)
+
+        x_axis_sc = "total_bill"
+        y_axis_sc = "tip"
+        sns.scatterplot(df_seaborn, x=x_axis_sc, y=y_axis_sc)
+        plt.show()
+
+        print("Bar plot")
+        x_axis_bar = "sex"
+        y_axis_bar = "tip"
+        sns.barplot(df_seaborn, x=x_axis_bar, y=y_axis_bar)
+        plt.show()
+
+        print("Heatmap")
+        data_hm = np.random.randint(10, 100, size=(5,5))
+        data_frame_hm = pd.DataFrame(data_hm, columns=["A", "B", "C", "D", "E"])
+        sns.heatmap(data_frame_hm, annot=True, cmap="viridis")
+        plt.show()
+
+        print("Pair plot")
+        sns.pairplot(data_frame_hm)
+        plt.show()
+
+        print("Kernal Density plot (KDE)")
+        print("It estimates the distribution of a dataset using a continuous curve, which is useful for understanding "
+              "the shape and spread of the data.")
+        sns.kdeplot(data_frame_hm)
+        plt.show()
+
+
 class Libraries(Sample):
     @abstractmethod
     def execute(self):
         # NumPy().execute()
         # Pandas().execute()
-        MatplotLib().execute()
+        # MatplotLib().execute()
+        Seaborn().execute()
