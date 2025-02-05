@@ -281,11 +281,20 @@ class Seaborn:
         sns.pairplot(data_frame_hm)
         plt.show()
 
-        print("Kernal Density plot (KDE)")
+        print("Kernel Density plot (KDE)")
         print("It estimates the distribution of a dataset using a continuous curve, which is useful for understanding "
               "the shape and spread of the data.")
         sns.kdeplot(data_frame_hm)
         plt.show()
+
+
+class ScikitLearn(Sample):
+    def __init__(self):
+        print("ScikitLearn is majorly used for ML projects")
+
+    @abstractmethod
+    def execute(self):
+        print("Examples")
 
 
 class Libraries(Sample):
@@ -294,4 +303,5 @@ class Libraries(Sample):
         # NumPy().execute()
         # Pandas().execute()
         # MatplotLib().execute()
-        Seaborn().execute()
+        # Seaborn().execute()
+        ScikitLearn().execute()
