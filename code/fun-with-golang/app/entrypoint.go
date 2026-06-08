@@ -3,8 +3,9 @@ package app
 import (
 	"fun-with-golang/config"
 	"fun-with-golang/intro"
-	"github.com/rs/zerolog/log"
 	"os"
+
+	"github.com/rs/zerolog/log"
 )
 
 func StartApp() {
