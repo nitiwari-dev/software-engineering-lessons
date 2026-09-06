@@ -16,6 +16,7 @@ A polyglot **mono-repo of software-engineering lessons** — each top-level dire
 | `code/fun-with-kotlin/` | Functional-style Kotlin | Kotlin + Maven | `mvn test` |
 | `code/fun-with-python/` | Jupyter setup, GenAI labs (`src/genai/`), LLM playgrounds (`src/llms/`), CLI (`src/cli/`) | Python + Docker (Jupyter) | none |
 | `code/fun-with-typescript/` | TS basics & pre-requisites | TS | none |
+| `code/fun-with-react/` | React playground; component lessons (e.g. `PlayerList`) showing CSS/JSX separation | React + Vite + TS | none |
 | `code/fun-with-shell-script/` | `adb-bulk-export.sh`, `adb-bulk-delete.sh` for Android backups | sh | n/a |
 | `system-design/topics/` | System-design topic implementations | Java + Maven | `mvn test` |
 | `system-design/utils/` | Go utilities — `hash_func/`, `redirect_router/` | Go | none |
@@ -76,6 +77,7 @@ CI in `build-ci.yml` is path-filtered — it only runs `mvn test` for the module
 - "Add a TDD lesson" → `agile/tdd/src/{main,test}/` under `auth/`, `checkout/`, or `generic/`.
 - "Add a system-design topic" → Java goes in `system-design/topics/`, Go utility in `system-design/utils/`.
 - "Add a GenAI lab" → notebook under `code/fun-with-python/src/genai/`; bring up Jupyter via `code/fun-with-python/setup/jupyter_notebook/init.sh`.
+- "Add a React component" → `code/fun-with-react/src/`. Colocate styles: `Foo.tsx` imports `./Foo.css` (don't import a component's CSS from `App.tsx`). Prefer a separate file per component over inline `<style>` blocks in JSX.
 
 ## What not to do
 
