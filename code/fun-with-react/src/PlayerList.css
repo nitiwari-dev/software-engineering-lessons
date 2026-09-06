@@ -1,0 +1,69 @@
+.row {
+  display: flex;
+  gap: 8px;
+  min-width: 0;    /* ✓ allow flex children to shrink below content size */
+}
+
+.col {
+  flex: 1 1 0;     /* ✓ column claims the row's free width next to avatar/button */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* ✓ pin name + age to the top of the column */
+  gap: 4px;
+  min-width: 0;
+}
+
+.name {
+  min-width: 0;    /* ✓ critical: allows text-overflow:ellipsis to work */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stat {
+  flex: 0 0 64px;  /* ✓ fixed width, no shrink, no grow */
+  text-align: right;
+}
+
+
+.player-container {
+  /* Reserve viewport-height up front so the loading → loaded swap doesn't shift layout */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Centers the loading spinner and text inside that 600px box */
+.status-center {
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  gap: 16px; /* Space between spinner and text */
+}
+
+/* Optional: Quick CSS spinner for a better user experience */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+img.avatar {
+  width: 48px;              /* Set your desired width */
+  height: 48px;             /* Set your desired height */
+  aspect-ratio: 1 / 1;      /* Ensures the bounding box is a perfect square */
+  object-fit: cover;        /* Prevents the image from stretching or distorting */
+  border-radius: 50%;       /* If you want a circular avatar */
+  background-color: #e0e0e0; /* Acts as a temporary placeholder background */
+  flex-shrink: 0;           /* Prevents flexbox from squeezing the image */
+}
