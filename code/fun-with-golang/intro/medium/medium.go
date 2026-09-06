@@ -1,12 +1,14 @@
 package medium
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"fun-with-golang/helper"
 	"math"
 	"sort"
 	"strconv"
+	"time"
 )
 
 func Init() {
@@ -308,4 +310,23 @@ func (numbers AlternateNumbers) validateAlternateNumbers() (bool, error) {
 		return false, errors.New("alternate number cannot be zero")
 	}
 	return true, nil
+}
+
+type RetryConfig struct {
+	MaxRetry   int
+	MaxDelay   time.Duration
+	InitDelay  time.Duration
+	LoadFactor float64
+}
+
+type UnrecoverableError struct {
+	Err error
+}
+
+func (e *UnrecoverableError) Error() string { return e.Err.Error() }
+func (e *UnrecoverableError) Unwrap() error { return e.Err }
+
+func RetryWithExpoBackOffAndJitter[T any](ctx context.Context, cfg RetryConfig, operation func(T, error)) (T, error) {
+	var zero T
+	return zero, nil
 }
